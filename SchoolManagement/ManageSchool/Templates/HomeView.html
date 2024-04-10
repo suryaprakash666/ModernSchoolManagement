@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{% static 'homepage.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body background="ba">
+    <div class="login-form">
+        <div class="container">
+            <h1 class="top-label2">You are a?</h1>
+            <div class="buttonsform">
+                <form method="post" action="{% url 'Homepage' %}">
+                    {% csrf_token %}
+                <button type="submit" name="buttonclicked" value="adminregister">School Admin</button>
+                <button type="submit" name="buttonclicked" value="staffregister">School Staff</button>
+                <button type="submit" name="buttonclicked" value="studentregister">Student Parent</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

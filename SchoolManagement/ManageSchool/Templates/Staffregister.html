@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'StaffRegisterView.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StaffRegister</title>
+</head>
+<body>
+    <div class="newstaffregister">
+    <form method="post" action="{% url 'Staffregisterlink' %}">
+        {% csrf_token %}
+        <h1>Personal Details</h1>
+        <input type="text"  id="firstName" name="firstname" placeholder="Enter Your firstName">
+        <input type="text" id="lastname" name="lastname" placeholder="Enter Your LastName">
+        <label for="passportphoto">Choose a passportsize photo</label>
+        <input type="file" id="passportphoto" name="passportphoto">
+        <label for="adharphoto">Upload adharphoto</label>
+        <input type="file" id="adharphoto" name="adharphoto">
+
+        <h1>Qualification</h1>
+        <div class="Qualification">
+        <label for="Qualification"><b>Enter Your Last Qualification</b></label><br>
+
+
+        <lable>Qualification</lable>
+        <select name="qualification" id="Qualification">
+            <option>Post Graduation</option>
+            <option>Graduation</option>
+            <option>Higher Secondary School</option>
+        </select>
+
+        <label for="Qualification">Upload the photocopy of the qulification certificate</label>
+        <input type="file" name="qualification-certificate" placeholder="Enter a photocopy of the certificate">
+        <label for="school">Choose School</label>
+        <select name="school" id="school" style="width: 100px;">
+            {% for school in schoollist %}
+        <option value="{{school}}">{{school}}</option>
+        {% endfor %}
+        </select>
+        </div>
+        <h1>Address</h1>
+        <input type="text" placeholder="Enter Your State" id="state" name="state">
+        <input type="text" placeholder="Enter Your Distric" id="district" name="district">
+        <input type="text" placeholder="Enter Your Locality" id="locality" name="locality">
+        <input type="text" placeholder="Enter Your PINCODE" id="pincode" name="pincode">
+
+        <button type="submit">Request an interview</button>
+    </form>
+    </div>
+</body>
+</html>

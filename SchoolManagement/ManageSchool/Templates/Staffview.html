@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_javascript %}
+  {% bootstrap_css %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href={% static 'staffview.css' %}>
+  <title>Document</title>
+</head>
+<body>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">ShoolName</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Options
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Academic Calender</a></li>
+              <li><a class="dropdown-item" href="#">Analyze Student</a></li>
+              <li><a class="dropdown-item" href="#">Contact Student</a></li>
+              <li><a class="dropdown-item" href="#">Send Message</a></li>
+             
+            </ul>
+          </li>
+     
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+<!--NavbarClosed-->
+
+  <div class="div">
+
+    <!--ProfileDivision-->
+    <div class="div-2">
+      <div class="profilecontainer">
+        <div class="profilepic">
+          <img src="{% static 'random.jpg' %}" alt="profile"
+            loading="lazy"
+            class="img"
+          />
+        </div>
+        <div class="profiledetailscontainer">
+          <div class="profiledetails">
+            Name -
+            <span style="font-weight: 500">Karan</span>
+            <br />
+            ID -
+            <span style="font-weight: 500">12205071</span>
+            <br />
+            Position -
+            <span style="font-weight: 500">Manager</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--ClassRoutineHeaderDivision-->
+    <div class="RoutineHeader">
+      <div class="div-6">CLASS</div>
+      <div class="div-7">{{current_date}}</div>
+    </div>
+
+    <!--ClassRoutineDivision-->
+    <div class="ClassRoutineDivision">
+      <div class="RoutineRow1">
+        <div class="div-10">
+          <div class="div-11">Hindi</div>
+          <div class="div-12">11:45</div>
+          <div class="div-13">D2322</div>
+        </div>
+        <div class="div-14">
+          <div class="div-15">Hindi</div>
+          <div class="div-16">12:45</div>
+          <div class="div-17">D2322</div>
+        </div>
+      </div>
+
+      <div class="RoutineRow2">
+        <div class="div-19">
+          <div class="div-20">Hindi</div>
+          <div class="div-21">12:45</div>
+          <div class="div-22">D2325</div>
+        </div>
+        <div class="div-23">
+          <div class="div-24">Hindi</div>
+          <div class="div-25">12:45</div>
+          <div class="div-26">D2325</div>
+        </div>
+      </div>
+
+
+      <div class="RoutineRow3">
+        <div class="div-28">
+          <div class="div-29">Hindi</div>
+          <div class="div-30">12:45</div>
+          <div class="div-31">D2325</div>
+        </div>
+        <div class="div-32">
+          <div class="div-33">Hindi</div>
+          <div class="div-34">12:45</div>
+          <div class="div-35">D2325</div>
+        </div>
+      </div>
+
+    </div>
+
+
+<!--DashBoardContainer-->
+    <div class="DashBoardContainer">
+      <div class="Dashboard">
+        <div class="classmessages">
+          <div class="div-38">
+            <div class="div-39">
+              <div class="div-40">Messages</div>
+              <div class="div-41">Parents</div>
+              <div class="div-42">Send us the exam marksheet of our student</div>
+            </div>
+          </div>
+        </div>
+        <div class="classtaskmanager">
+          <div class="div-43">
+            <div class="div-44">Task-Manager</div>
+            <div class="div-45">Administrator</div>
+            <div class="div-46">
+              You have to meet the Head of Department at 04:50 PM
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+</html>

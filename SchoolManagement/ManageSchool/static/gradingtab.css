@@ -1,0 +1,82 @@
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+.Student-GradingTab-Container{
+    display: grid;
+    grid-template-columns: 1fr; /* One column taking full width */
+    grid-template-rows: auto auto; /* Two rows */
+    gap: 10px;
+}
+
+.Student-Info{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height:20%;
+    margin: auto;
+    border: transparent;
+    border-radius: 10px;
+    background-color: aqua;
+}
+.StudentID {
+   width: 50%;
+}
+
+.Studentprofilecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items vertically */
+}
+
+.Studentprofilecontainer img {
+    margin-right: 20px; /* Adjust margin as needed */
+    height: 120px;
+    width: 120px;
+    border-radius: 80px;
+    margin-left: 10px;
+}
+
+.Studentprofilecontainer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.Studentprofilecontainer li {
+    margin-bottom: 5px; /* Add space between list items */
+}
+
+.TypeSelectiontab{
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: auto auto;
+    border: transparent;
+    background-color: aqua;
+    margin-top: 20px;
+}
+.marks{
+    border: none;
+    resize: none;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+}
+
+.resultcalculatingbutton{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto auto;
+}

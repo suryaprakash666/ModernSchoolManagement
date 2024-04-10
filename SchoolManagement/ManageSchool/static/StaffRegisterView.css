@@ -1,0 +1,68 @@
+/* This is the external CSS file */
+
+/* Use a custom font for the whole document */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Style the form container */
+.newstaffregister {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form headings */
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style the form labels */
+label {
+  display: block;
+  color: #555;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* Style the form inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Style the file inputs */
+input[type=file] {
+  padding: 5px;
+}
+
+/* Style the form buttons */
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #3CBC8D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Add some hover effects */
+button:hover {
+  background-color: #2E9C6A;
+}
+
+input:focus, select:focus {
+  border-color: #3CBC8D;
+}
