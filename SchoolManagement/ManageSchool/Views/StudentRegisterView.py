@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from ManageSchool.models import Studentdatamodel, Schooldatamodel
-from django.http import HttpResponse
+from ..models import Schooldatamodel, Studentdatamodel
+from ..Forms.StudentForm import StudentForm
+
 
 def studentregisterview(request):
     if request.method == 'POST':
@@ -10,10 +11,12 @@ def studentregisterview(request):
         passportphoto = request.FILES.get('passportphoto')
         adharphoto = request.FILES.get('adharphoto')
         contact = request.POST.get('parentmobile')
+
         state = request.POST.get('state')
         district = request.POST.get('district')
         locality = request.POST.get('locality')
         pincode = request.POST.get('pincode')
+
         school_name = request.POST.get('school')
         school = Schooldatamodel.objects.get(School_Name=school_name)
 
@@ -22,7 +25,8 @@ def studentregisterview(request):
                                    Student_Contact=contact, Student_State=state, Student_District=district,
                                    Student_Locality=locality, Student_Pincode=pincode, Student_School=school)
         student.save()
-        return HttpResponse('registered')
+        form = StudentForm()
+        return render(request, 'Studentlogin.html', {'form': form})
     elif request.method == 'GET':
         schoollist = Schooldatamodel.objects.values_list('School_Name', flat=True)
-        return render(request, 'StudentAddmission.html',{'schoollist':schoollist})
+        return render(request, 'Studentregister.html', {'schoollist': schoollist})

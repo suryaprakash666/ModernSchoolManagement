@@ -1,0 +1,53 @@
+/* studentform.css */
+
+/* Set background image */
+body {
+    background-image: url('userlogin.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover; /* Cover the entire body */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right:200px;/* Horizontally center the content towards the right */
+    height: 100vh; /* Set the height to cover the whole viewport */
+}
+
+/* Center the form-container */
+.form-container {
+    width: 400px; /* Adjust the width as needed */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: transparent; /* Transparent background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form horizontally */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    border:trasparent;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question {
+    text-align: center;
+}

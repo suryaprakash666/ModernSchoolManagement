@@ -11,4 +11,4 @@ def schoolloginview(request):
            pass  # Assuming you have a URL named 'login'
     else:
         form = SchoolForm()
-    return render(request, 'Studentlogin.html', {'form': form})
+    return render(request, 'Schoollogin.html', {'form': form})

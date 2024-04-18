@@ -8,18 +8,51 @@
     <title>Login Form</title>
 </head>
 <body background="ba">
-    <div class="login-form">
-        <div class="container">
-            <h1 class="top-label2">You are a?</h1>
-            <div class="buttonsform">
-                <form method="post" action="{% url 'Homepage' %}">
-                    {% csrf_token %}
-                <button type="submit" name="buttonclicked" value="adminregister">School Admin</button>
-                <button type="submit" name="buttonclicked" value="staffregister">School Staff</button>
-                <button type="submit" name="buttonclicked" value="studentregister">Student Parent</button>
-                </form>
-            </div>
-        </div>
+  <div class="div">
+  <img
+    srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&"
+    class="img"
+  />
+  <div class="div-2">
+    <div class="div-3">
+      <div class="div-4">You are a?</div>
+      <div class="div-5" id="admin">School Admin</div>
+      <div class="div-6" id="staff">School Staff</div>
+      <div class="div-7" id="parent">Student Parent</div>
     </div>
+  </div>
+</div>
+  <script>
+// Function to switch to Page 1
+const switchToPage1 = () => {
+  // Replace the URL below with the actual URL of Page 1
+  const page1Url = "/studentlogin/";
+  window.location.href = page1Url;
+};
+
+// Function to switch to Page 2
+const switchToPage2 = () => {
+  // Replace the URL below with the actual URL of Page 2
+  const page2Url = "/stafflogin/";
+  window.location.href = page2Url;
+};
+
+// Function to switch to Page 3
+const switchToPage3 = () => {
+  // Replace the URL below with the actual URL of Page 3
+  const page3Url = "schoollogin";
+  window.location.href = page3Url;
+};
+
+// Attach these functions to your buttons
+const button1 = document.getElementById("parent");
+button1.addEventListener("click", switchToPage1);
+
+const button2 = document.getElementById("staff");
+button2.addEventListener("click", switchToPage2);
+
+const button3 = document.getElementById("admin");
+button3.addEventListener("click", switchToPage3);
+</script>
 </body>
 </html>

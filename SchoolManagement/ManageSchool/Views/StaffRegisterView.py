@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from ManageSchool.models import Staffdatamodel, Schooldatamodel
 from django.http import HttpResponse
+from ..models import Schooldatamodel, Staffdatamodel
+from ..Forms.StaffForm import StaffForm
 
 def staffregisterview(request):
     # Handle POST request when submitting staff registration form
@@ -26,10 +27,8 @@ def staffregisterview(request):
                                Staff_Adharpic=adharphoto, Staff_Qualification=qualification, Staff_State=state,
                                Staff_District=district, Staff_Locality=locality, Staff_Pincode=pincode, School_Name=school)
         Staff.save()
-        
-        # Return a success message as HttpResponse
-        return HttpResponse('registered')
-    
+        form = StaffForm()
+        return render(request, 'Stafflogin.html', {'form': form})
     # Handle GET request to render the staff registration form
     elif request.method == 'GET':
         # Retrieve a list of school names to populate the school selection dropdown

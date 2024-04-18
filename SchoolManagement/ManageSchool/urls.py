@@ -22,12 +22,11 @@ urlpatterns = [
     path('sendmessage/', Staffhomepage.send_whatsapp_message, name="Sendmessage"),
 
     # StudentRelatedURLs
-    path('studentlogin', StudentLoginView.studentloginview, name="gradingtaburl"),
+    path('studentlogin/', StudentLoginView.studentloginview, name="gradingtaburl"),
     path('studentregister/', StudentRegisterView.studentregisterview, name="Studentregisterlink"),
 
     # SchoolRelatedURLs
-    path('schoolregister/', SchoolRegisterView.schoolregisterview, name="SchoolRegisterlink"),
-    path('schoollogin/', SchoolLoginView.schoolloginview, name="schoolloginlink"),
-    path('schoolsign/', SchoolSignView.schoolsignview, name="adminsignurl"),
+    path('schoolregister/', SchoolRegisterView.schoolregisterview, name="schoolregisterlink"),
+    path('schoollogin/', SchoolLoginView.schoolloginview, name="schoolloginlink")
 
 ]
