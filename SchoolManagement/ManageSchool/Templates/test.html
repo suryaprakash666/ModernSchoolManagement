@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="gra">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading Tab</title>
+</head>
+<body>
+    <!--StudentProfileInfo-->
+    <div class="Studentprofilecontainer">
+        <img src="random.jpg" alt="profilepic">
+        <ul>
+            <li>Name: John Doe</li>
+            <li>ID: 123456</li>
+            <li>Section:D2456</li>
+        </ul>
+    </div>
+    <!--Type Selection Tab-->
+    <div class="TypeSelectiontab">
+        <div class="ExamType">
+            <label for="ExamType">Choose Exam</label>
+<select name="ExamType" id="ExamType">
+<option value="Exam-1">Exam-1</option>
+<option value="Exam-2">Exam-2</option>
+<option value="Exam-3">Exam-3</option>
+</select>
+
+        </div>
+        <div class="StudentID">
+            <label for="StudentID">StudentID</label>
+<select name="StudentID" id="StudentID">
+<option value="StudentID">123095</option>
+<option value="StudentID">123096</option>
+<option value="StudentID">123097</option>
+</select>
+
+        </div>
+
+
+
+    </div>
+    <!--EvaluationTab-->
+    <div class="EvaluationTable">
+         <table>
+            <tr>
+                <th>Subject</th>
+                <th>Mark in div1</th>
+                <th>Mark in div2</th>
+                <th>Mark in div3</th>
+            </tr>
+            <tr>
+                <td><div class="Subject">
+                    <label for="Subject">Choose Subject</label>
+        <select name="Subject" id="Subject">
+        <option value="Subject-1">Hindi</option>
+        <option value="Subject-2">Odia</option>
+        <option value="Subject-3">Computer</option>
+        </select>
+
+                </div></td>
+                <td><textarea class="marks" placeholder="Enter Mark" ></textarea></td>
+                <td><textarea class="marks" placeholder="Enter Mark" ></textarea></td>
+                <td><textarea class="marks" placeholder="Enter Mark" ></textarea></td>
+            </tr>
+         </table>
+    </div>
+   <div class="resultcalculatingbutton">
+   <button type="button">Caculate Result</button>
+   </div>
+    <!--ResultTab-->
+
+    <div class="GradeResultTab">
+        <table>
+            <tr>
+                <th colspan="4">Student GradeResult Tab</th>
+            </tr>
+            <tr>
+                <th>Subjects</th>
+                <th>TotalMark</th>
+                <th>Grade</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>Hindi</td>
+                <td>78</td>
+                <td>A+</td>
+                <td>PASS</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

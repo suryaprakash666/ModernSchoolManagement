@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<head>
+    <meta charset="UTF-8">
+    <title>Parent Homepage</title>
+</head>
+<body>
+     <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Student Performance</a></li>
+            <li><a class="dropdown-item" href="#">Online Payment</a></li>
+            <li><a class="dropdown-item" href="#">Visit School</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+     <div class="student-profile">
+    <div class="profile-content">
+        <p>Name: {{student.firstname}} {{student.lastname}}</p>
+        <p>Class: 10th Grade</p>
+        <p>Current Academic Performance: A+</p>
+    </div>
+    <img src="{% static 'random.jpg'%}" alt="Profile Image" class="profile-image">
+</div>
+
+     <div class="cards-container">
+
+         <div class="card1">
+         <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+         </div>
+
+             <div class="card2">
+             <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+             </div>
+
+                <div class="card3">
+             <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+
+</div></div>
+
+</div>
+
+    <style>
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* This will allow the cards to wrap onto the next line if the container width is exceeded */
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.navbar {
+    background-color: #333; /* Change this to your desired color */
+    border: 1px solid #000; /* Change this to your desired border color and width */
+    position: sticky;
+    top: 0; /* This will make the navbar stick to the top of the page */
+    z-index: 1000; /* This will ensure the navbar stays on top of other elements */
+}
+
+
+.student-profile h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.student-profile p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+.student-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    background-color: #80b2e4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.profile-content {
+    width: 75%;
+}
+
+.profile-content h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.profile-content p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+    </style>
+</body>
+</html>

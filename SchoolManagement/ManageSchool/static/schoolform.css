@@ -1,52 +1,45 @@
-
-/* Set background image */
-body {
-    background-image: url('userlogin.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
-    background-size: cover; /* Cover the entire body */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent background image from repeating */
-    margin: 0;
+.login-form{
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-end;
-    margin-right:200px;/* Horizontally center the content towards the right */
-    height: 100vh; /* Set the height to cover the whole viewport */
+    height: 100vh;
 }
-
-/* Center the form-container */
-.form-container {
-    width: 400px; /* Adjust the width as needed */
+.container {
+    background-color: #f0f0f0;
     padding: 20px;
-    border-radius: 5px;
-    background-color: transparent; /* Transparent background */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.form {
+.container:hover{
+    background-color:#c7c3c3 ;
+}
+
+.top-label {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.buttons {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the form horizontally */
-    margin-bottom: 20px;
+    align-items: center;
 }
 
-.form-group {
-    margin-bottom: 20px;
-    border:trasparent;
-}
-
-.form-label {
-    font-weight: bold;
-}
-
-.submit-btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+.buttons button {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    width: 150px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.question {
-    text-align: center;
+.buttons button:hover {
+    background-color: #0056b3;
 }

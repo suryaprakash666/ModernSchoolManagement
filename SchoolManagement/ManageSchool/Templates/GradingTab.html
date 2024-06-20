@@ -8,6 +8,10 @@
     <title>Grading Tab</title>
 </head>
 <body>
+<!--Navbar-->
+ <div id="navbar-container">
+    {% include 'StaffNavbar.html' %}
+ </div>
     <!--StudentProfileInfo-->
     <div class="Studentprofilecontainer">
         <img src="{% static 'random.jpg' %}" alt="profilepic">
@@ -19,6 +23,7 @@
     </div>
     <!--Type Selection Tab-->
     <div class="TypeSelectiontab">
+
         <div class="ExamType">
             <label for="ExamType">Choose Exam</label>
 <select name="ExamType" id="ExamType">
@@ -26,8 +31,29 @@
 <option value="Exam-2">Exam-2</option>
 <option value="Exam-3">Exam-3</option>
 </select>
-
         </div>
+
+         <div class="classname">
+             <label for="classname">Choose Class</label>
+             <select name="classname" id="classname">
+                 <option value="Standard1">Standard1</option>
+                 <option value="Standard1">Standard1</option>
+                 <option value="Standard1">Standard1</option>
+                 <option value="Standard1">Standard1</option>
+             </select>
+         </div>
+
+             <div class="section">
+             <label for="section">Choose Class</label>
+             <select name="section" id="section">
+                 <option value="Section1">Section1</option>
+                 <option value="Section1">Section1</option>
+                 <option value="Section1">Section1</option>
+                 <option value="Section1">Section1</option>
+             </select>
+         </div>
+
+
         <div class="StudentID">
             <label for="StudentID">StudentID</label>
 <select name="StudentID" id="StudentID">
@@ -35,43 +61,58 @@
 <option value="StudentID">123096</option>
 <option value="StudentID">123097</option>
 </select>
-
         </div>
-        
 
+        <div class="profilepic">
+            <img src="{% static 'random.jpg' %}" alt="profile">
+        </div>
 
     </div>
-    <!--EvaluationTab-->
-    <div class="EvaluationTable">
-         <table>
-            <tr>
-                <th>Subject</th>
-                <th>Mark in div1</th>
-                <th>Mark in div2</th>
-                <th>Mark in div3</th>
-            </tr>
-            <tr>
-                <td><div class="Subject">
-                    <label for="Subject">Choose Subject</label>
-        <select name="Subject" id="Subject">
-        <option value="Subject-1">Hindi</option>
-        <option value="Subject-2">Odia</option>
-        <option value="Subject-3">Computer</option>
-        </select>
-        
-                </div></td>
-                <td><textarea class="marks" placeholder="Enter Mark" ></textarea></td>
-                <td><textarea class="marks" placeholder="Enter Mark" ></textarea></td>
-                <td><textarea class="marks" placeholder="Enter Mark" ></textarea></td>
-            </tr>
-         </table>
-    </div>
+       <!--EvaluationTab-->
+
+       <div class="evaluationtab">
+           <table>
+               <tr>
+                   <th colspan="4">Evaluation Tab</th>
+               </tr>
+               <tr id="divisionRow">
+                   <th>
+                       <label for="subject">Subject</label>
+                       <select name="subject" id="subject">
+                           <option value="Hindi">Hindi</option>
+                           <option value="English">English</option>
+                           <option value="Maths">Maths</option>
+                           <option value="Science">Science</option>
+                          </select>
+                   </th>
+                   <th>Division1<br>
+                   <textarea placeholder="Enter Marks" type="text">
+
+                   </textarea>
+                   </th>
+                   <th>Marks Obtained<br>
+                       <textarea placeholder="Marks" type="text" id="marksObtained" readonly></textarea></th>
+                   </th>
+               </tr>
+
+               <tr>
+
+               </tr>
+           </table>
+       </div>
+       <div class="Add Divisions">
+
+       </div>
+
+
    <div class="resultcalculatingbutton">
-   <button type="button">Caculate Result</button>
+       <button type="button" id="Division">Add Division</button>
+        <button type="button">Caculate Result</button>
+        <button type="button">Reset Evaluation</button>
    </div>
     <!--ResultTab-->
 
-    <div class="GradeResultTab">
+    <div class="Student-GradingTab-Container">
         <table>
             <tr>
                 <th colspan="4">Student GradeResult Tab</th>
@@ -90,5 +131,60 @@
             </tr>
         </table>
     </div>
+
+
+<script>
+   // When the page loads, create the divisions based on the number stored in local storage
+window.onload = function() {
+    var numDivisions = localStorage.getItem('numDivisions');
+    if (numDivisions) {
+        for (var i = 2; i <= numDivisions; i++) {
+            addDivision(i);
+        }
+    }
+};
+
+document.getElementById('Division').addEventListener('click', function() {
+    // Get the number of divisions from local storage
+    var numDivisions = localStorage.getItem('numDivisions');
+
+    // If numDivisions is null, this is the first division being added
+    if (!numDivisions) {
+        numDivisions = 2;
+    } else {
+        numDivisions++;
+    }
+
+    // Store the updated number of divisions in local storage
+    localStorage.setItem('numDivisions', numDivisions);
+
+    // Add the new division
+    addDivision(numDivisions);
+});
+
+function addDivision(num) {
+    // Get the table row where divisions will be added
+    var row = document.getElementById('divisionRow');
+
+    // Create a new table header for the division
+    var newHeader = document.createElement('th');
+    newHeader.textContent = "Division" + num;
+
+    // Create a new textarea for the division
+    var newTextArea = document.createElement('textarea');
+    newTextArea.placeholder = "Enter Marks";
+    newTextArea.type = "text";
+
+    // Add the textarea to the new table header
+    newHeader.appendChild(newTextArea);
+
+    // Append the new table header to the row
+    row.appendChild(newHeader);
+    let marksObtained = document.getElementById('marksObtained');
+    row.insertBefore(newHeader, marksObtained);
+
+}
+</script>
+
 </body>
 </html>

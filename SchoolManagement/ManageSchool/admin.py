@@ -1,25 +1,43 @@
-from django.contrib import admin
-
 # Register your models here.
 from django.contrib import admin
-from .models import Schooldatamodel, Staffdatamodel, Studentdatamodel
+
+"""
+from .DataBaseModels.AddressdatamodelFile import Addressdatamodel
+from .DataBaseModels.ClassdatamodelFile import Classdatamodel
+from .DataBaseModels.SchooldatamodelFile import Schooldatamodel
+from .DataBaseModels.StaffdatamodelFile import Staffdatamodel
+from .DataBaseModels.StudentdatamodelFile import Studentdatamodel
+"""
+# from .DataBaseModels.SubjectdatamodelFile import Subjectdatamodel
+"""
 
 
 @admin.register(Schooldatamodel)
 class SchooldataAdmin(admin.ModelAdmin):
-    list_display = ('School_Name', 'School_Email')  # Display these fields in the list view
-    search_fields = ('School_Name', 'School_Name') # Enable search by username and email
+    display = ('School_Name', 'School_Email')  # Display these fields in the list view
 
 
 @admin.register(Staffdatamodel)
 class StaffdataAdmin(admin.ModelAdmin):
-    list_display = ('Staff_Firstname', 'Staff_Lastname')
-    search_fields = ('Staff_Firstname', 'Staff_ID')
+    display = 'Staff_Name'
 
 
 @admin.register(Studentdatamodel)
 class Studentdataadmin(admin.ModelAdmin):
-    list_display = ('Student_Firstname', 'Student_Contact')
-    search_fields = ('Student_Id', 'Student_Firstname')
+    display = 'Student_Firstname'
 
-# Register the model with the customized admin class
+
+@admin.register(Classdatamodel)
+class ClassAdmin(admin.ModelAdmin):
+    display = 'ClassName'
+
+
+@admin.register(Subjectdatamodel)
+class SubjectAdmin(admin.ModelAdmin):
+    display = 'Subjects'
+
+
+@admin.register(Addressdatamodel)
+class SubjectAdmin(admin.ModelAdmin):
+    display = 'State'
+"""

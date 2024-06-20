@@ -1,14 +1,14 @@
 from datetime import date
-from django.http import HttpResponse
-from django.shortcuts import render 
 
-from django.views.decorators.csrf import csrf_exempt
-import pywhatkit
+from django.shortcuts import render
+
 
 def staffhomeview(request):
     current_date = date.today()
-    return render(request, 'Staffview.html',{'current_date': current_date})
+    return render(request, 'Staffview.html', {'current_date': current_date})
 
+
+""" 
 def send_whatsapp_message(request):
     to_number = ""
     message_body = ""
@@ -22,3 +22,4 @@ def send_whatsapp_message(request):
         except ValueError:
             if not to_number or not message_body:
                 return HttpResponse(request, "Enter a correct number")
+"""

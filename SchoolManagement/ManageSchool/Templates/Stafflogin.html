@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'staffform.css' %}">
+    <link rel="stylesheet" href="{% static 'loginform.css' %}">
     <title>Document</title>
 </head>
 <body>
@@ -15,11 +15,11 @@
         {% csrf_token %}
         <div class="form-group">
             <label  class="form-label">Username:</label>
-            {{ form.Staff_Firstname }}
+            {{ form.name }}
         </div>
         <div class="form-group">
             <label  class="form-label">Password:</label>
-            {{ form.Staff_Password }}
+            {{ form.password }}
         </div>
     </form>
         <button type="submit" class="submit-btn">Login</button>
@@ -28,10 +28,14 @@
 
        <div class="question">
     <p>Are you not registered?
-        <a href="#">Click Here</a>
+        <a href="#" onclick="switchToRegistrationPage()">Click Here</a>
     </p>
        </div>
-
+<script>
+    function switchToRegistrationPage() {
+        window.location.href = '/staffregister/';
+    }
+</script>
    </div>
 </body>
 </html>

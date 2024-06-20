@@ -1,10 +1,10 @@
 # forms.py
 
 from django import forms
-from ..models import Staffdatamodel
+from ..ModelsOfDatabase.StaffDataModel import Staffdatamodel
 
 
 class StaffForm(forms.ModelForm):
     class Meta:
         model = Staffdatamodel
-        fields = ['Staff_Firstname', 'Staff_Password']  # Add more fields as needed
+        fields = ['name', 'password']

@@ -1,0 +1,236 @@
+ .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        color: white;
+        padding: 10px;
+    }
+    .nav-elements{
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+    }
+    .nav-elements h1{
+        color: white;
+        text-decoration: none;
+        font-size: large;
+    }
+    .school-logo img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .topframe{
+        background: linear-gradient(90deg, rgb(9, 51, 50) 0%, rgba(9,121,118,1) 35%, rgba(0,212,255,1) 100%);
+        padding: 10px;
+        height: 300px;
+        border: transparent;
+        border-bottom-left-radius: 50% 20%;
+        border-bottom-right-radius: 50% 20%;
+    }
+
+    .school-logo img{
+        border-radius: 50%;
+    }
+
+    .info-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .schoolname{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .tagline{
+        font-size: 20px;
+        color: white;
+    }
+    .button1{
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+       .academicslink{
+        cursor: pointer;
+        position: relative;  /* Add this */
+    }
+    .academicslink:hover {
+        color: aqua;
+    }
+    .academics{
+        border: transparent;
+        border-radius: 10px;
+        background-color: white;
+        display: none;
+        position: absolute;
+        height: max-content;
+        width: 500px;
+        top: 65%;
+        box-shadow: black 5px 5px 5px;
+    }
+    .academicslink-wrapper{
+        position: relative;
+    }
+    .academicslink-wrapper:hover  .academics {
+        display: block;
+    }
+
+    .academics-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+    .academics-content li{
+        list-style-type: none;
+        color: black;
+        padding: 10px;
+        font-size: large;
+
+    }
+
+    .academics-content .li a{
+     text-decoration: none;
+ }
+
+
+/* staffhover*/
+ .staffs{
+
+        border: transparent;
+        border-radius: 10px;
+        background-color: white;
+        display: none;
+        position: absolute;
+        height: max-content;
+        width: 500px;
+        top: 65%;
+        box-shadow: black 5px 5px 5px;
+    }
+    .stafflink-wrapper{
+        position: relative;
+    }
+    .stafflink-wrapper:hover  .staffs {
+        display: block;
+    }
+    .stafflink{
+        cursor: pointer;
+        position: relative;  /* Add this */
+    }
+    .stafflink:hover {
+        color: aqua;
+    }
+    .staff-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    }
+.staff-content li{
+        list-style-type: none;
+        color: black;
+        padding: 10px;
+        font-size: large;
+
+    }
+
+    .staff-content .li a{
+     text-decoration: none;
+ }
+
+/* studenthover*/
+    .students{
+
+            border: transparent;
+            border-radius: 10px;
+            background-color: white;
+            display: none;
+            position: absolute;
+            height: max-content;
+            width: 500px;
+            top: 65%;
+            box-shadow: black 5px 5px 5px;
+    }
+    .studentslink-wrapper{
+        position: relative;
+
+    }
+    .studentslink-wrapper:hover  .students {
+        display: block;
+
+    }
+    .studentslink{
+        cursor: pointer;
+        position: relative;  /* Add this */
+    }
+    .studentslink:hover {
+        color: aqua;
+    }
+    .student-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    }
+    .student-content li{
+        list-style-type: none;
+        color: black;
+        padding: 10px;
+        font-size: large;
+    }
+    .student-content .li a{
+        text-decoration: none;
+    }
+        /* othershover*/
+          .others{
+
+                border: transparent;
+                border-radius: 10px;
+                background-color: white;
+                display: none;
+                position: absolute;
+                height: max-content;
+                width: 500px;
+                top: 65%;
+                box-shadow: black 5px 5px 5px;
+          }
+
+            .otherslink-wrapper{
+                position: relative;
+            }
+            .otherslink-wrapper:hover  .others {
+                display: block;
+            }
+            .otherslink{
+                cursor: pointer;
+                position: relative;  /* Add this */
+            }
+            .otherslink:hover {
+                color: aqua;
+            }
+            .other-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            }
+            .other-content li{
+                list-style-type: none;
+                color: black;
+                padding: 10px;
+                font-size: large;
+
+            }
+            .other-content .li a{
+             text-decoration: none;
+            }

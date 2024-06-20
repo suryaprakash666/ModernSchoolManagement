@@ -1,4 +1,3 @@
-// Function to switch to Page 1
 const switchToPage1 = () => {
   // Replace the URL below with the actual URL of Page 1
   const page1Url = "/studentlogin/";

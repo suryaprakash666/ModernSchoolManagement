@@ -4,33 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'studentform.css' %}">
+    <link rel="stylesheet" href="{% static 'loginform.css' %}">
     <title>Document</title>
 </head>
 <body>
    <div class="form-container">
-
        <div class="form">
-    <form method="post">
+    <form class="studentLoginForm" method="post" action="{% url 'studentloginurl' %}">
         {% csrf_token %}
         <div class="form-group">
-            <label  class="form-label">Username:</label>
-            {{ form.Student_Firstname }}
+            <label  class="form-label">Mobile:</label>
+            {{ form.parentmobile }}
         </div>
         <div class="form-group">
             <label  class="form-label">Password:</label>
-            {{ form.Student_Password }}
+            {{ form.password }}
         </div>
-    </form>
+        <div class="loginbutton">
         <button type="submit" class="submit-btn">Login</button>
+        </div>
 
+    </form>
        </div>
+   <style>
+       .studentLoginForm{
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
 
+       }
+   </style>
        <div class="question">
     <p>Are you not registered?
-        <a href="#">Click Here</a>
+        <a href="#studentregister" onclick="switchToRegistrationPage()">Click Here</a>
     </p>
        </div>
+<script>
+    function switchToRegistrationPage() {
+        // Replace the URL below with the actual URL of your registration page
+        window.location.href = '/studentregister/';
+    }
+</script>
 
    </div>
 </body>

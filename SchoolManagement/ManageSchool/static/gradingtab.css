@@ -40,7 +40,7 @@ th, td {
     align-items: center; /* Align items vertically */
 }
 
-.Studentprofilecontainer img {
+.Staffprofilecontainer img {
     margin-right: 20px; /* Adjust margin as needed */
     height: 120px;
     width: 120px;
@@ -48,23 +48,31 @@ th, td {
     margin-left: 10px;
 }
 
-.Studentprofilecontainer ul {
+.Staffprofilecontainer ul {
     list-style-type: none;
     padding: 0;
 }
 
-.Studentprofilecontainer li {
+.Staffprofilecontainer li {
     margin-bottom: 5px; /* Add space between list items */
 }
 
 .TypeSelectiontab{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     width: 60%;
-    margin: auto auto;
     border: transparent;
     background-color: aqua;
-    margin-top: 20px;
+    margin: 20px auto auto;
+}
+
+.TypeSelectiontab img{
+    margin-right: 20px; /* Adjust margin as needed */
+    height: 120px;
+    width: 120px;
+    border-radius: 80px;
+    margin-left: 10px;
 }
 .marks{
     border: none;
@@ -76,7 +84,11 @@ th, td {
 
 .resultcalculatingbutton{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 80%;
     margin: auto auto;
 }
+.EvaluationTab textarea {
+    height: 30px;
+}
+

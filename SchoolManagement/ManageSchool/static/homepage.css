@@ -1,18 +1,26 @@
- .div {
-    disply: flex;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+.form-container{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: end;
     overflow: hidden;
     position: relative;
-    display: flex;
-    min-height: 616px;
-    height:590px;
+    height: 100vh; /* Change this line */
+    width: 60%;
     font-size: 22px;
     color: #000;
     font-weight: 700;
     padding: 80px 60px;
-  }
+    margin-left: 40%;
+}
   @media (max-width: 991px) {
     .div {
       padding: 0 20px;
@@ -28,8 +36,8 @@
   }
   .div-2 {
     position: relative;
-    border-radius: 30px;
-    background: linear-gradient(0deg, #0babc1 0%, #0babc1 100%), #fff;
+    border-radius: 10px;
+    background: rgba(0,212,255,100%);
     display: flex;
     width: 601px;
     max-width: 100%;
@@ -37,7 +45,8 @@
     justify-content: center;
     margin: 76px 61px 0 0;
     padding: 76px 60px;
-  }
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Add this line */
+}
   @media (max-width: 991px) {
     .div-2 {
       margin: 40px 10px 0 0;
@@ -50,21 +59,26 @@
     width: 450px;
     max-width: 100%;
     flex-direction: column;
+    row-gap: 20px;
   }
   .div-4 {
     font-family: Inter, sans-serif;
     justify-content: center;
     align-self: center;
     color: #fff;
+    text-align: center;
   }
   .div-5 {
     font-family: Inter, sans-serif;
-    border-radius: 20px;
-    background-color: #d9d9d9;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(6,55,54,1) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
     margin-top: 56px;
     align-items: center;
     justify-content: center;
     padding: 21px 60px;
+    text-align: center;
+    font-size: 15px;
+    width: 50%;
   }
   @media (max-width: 991px) {
     .div-5 {
@@ -75,11 +89,14 @@
   }
   .div-6 {
     font-family: Inter, sans-serif;
-    border-radius: 20px;
-    background-color: #d9d9d9;
+    border-radius: 10px;
+    background:linear-gradient(90deg, rgba(6,55,54,1) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
     margin-top: 29px;
     align-items: center;
     padding: 27px 60px 15px;
+    text-align: center;
+    font-size: 15px;
+    width: 50%;
   }
   @media (max-width: 991px) {
     .div-6 {
@@ -89,12 +106,16 @@
   }
   .div-7 {
     font-family: Inter, sans-serif;
-    border-radius: 20px;
-    background-color: #d9d9d9;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(6,55,54,1) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
     margin-top: 29px;
     align-items: center;
     justify-content: center;
     padding: 21px 60px 21px 73px;
+    text-align: center;
+    font-size: 15px;
+    width:50%;
+
   }
   @media (max-width: 991px) {
     .div-7 {
@@ -102,3 +123,16 @@
       padding: 0 20px;
     }
   }
+
+body {
+    background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.div-1{
+  width: 100%;
+  font-size: 40px;
+}

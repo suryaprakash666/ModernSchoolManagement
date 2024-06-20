@@ -35,7 +35,7 @@
         <input type="file" name="qualification-certificate" placeholder="Enter a photocopy of the certificate">
         <label for="school">Choose School</label>
         <select name="school" id="school" style="width: 100px;">
-            {% for school in schoollist %}
+            {% for school in schools %}
         <option value="{{school}}">{{school}}</option>
         {% endfor %}
         </select>
@@ -46,7 +46,7 @@
         <input type="text" placeholder="Enter Your Locality" id="locality" name="locality">
         <input type="text" placeholder="Enter Your PINCODE" id="pincode" name="pincode">
 
-        <button type="submit">Request an interview</button>
+        <button type="submit" id="request">Request an interview</button>
     </form>
     </div>
 </body>

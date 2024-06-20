@@ -10,35 +10,36 @@
 </head>
 <body>
     <div class="newstaffregister">
-        <form method="post" action="{% url 'Studentregisterlink' %}">
+        <form id="studentForm" method="post" action="{% url 'Studentregisterlink' %}">
             {% csrf_token %}
             <h1>Student Registration Form</h1>
             <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name">
             <input type="text" id="lastname" name="lastname" placeholder="Enter Your Last Name">
             <label for="dob">Date Of Birth</label>
-            <input type="date" id="dob" name="dob" >
+            <input type="date" id="dob" name="dob" value="{{ student.date_of_birth|date:'Y-m-d' }}">
             <label for="passportphoto">Choose a passport size photo</label>
-            <input type="file" id="passportphoto" name="passportphoto">
+            <input type="file" id="passportphoto" name="passportphoto" accept=".jpeg, .jpg, .png" required>
             <label for="adharphoto">Upload Aadhar photo</label>
-            <input type="file" id="adharphoto" name="adharphoto">
+            <input type="file" id="adharphoto" name="adharphoto" accept=".jpeg, .jpg, .png" required>
             <h1>Parent Details</h1>
-            <input type="text" id="fathername" name="fathername" placeholder="Enter Your Father's Name">
-            <input type="text" id="mothername" name="mothername" placeholder="Enter Your Mother's Name">
-            <input type="text" id="parentmobile" name="parentmobile" placeholder="Parent's Mobile Number">
+            <input type="text" id="fathername" name="fathername" placeholder="Enter Your Father's Name" required>
+            <input type="text" id="mothername" name="mothername" placeholder="Enter Your Mother's Name" required>
+            <input type="text" id="parentmobile" name="parentmobile" placeholder="Parent's Mobile Number" required>
             <h1>School Information</h1>
             <label for="school">Choose School</label>
             <select title="Choose School" name="school" id="school" style="width: 100px;">
-                {% for school in schoollist %}
+                {% for school in schools %}
                 <option value="{{school}}">{{school}}</option>
                 {% endfor %}
             </select>
             <h1>Address Details</h1>
-            <input type="text" id="state" name="state" placeholder="Enter Your State">
-            <input type="text" id="district" name="district" placeholder="Enter Your District">
+            <input type="text" id="street" name="street" placeholder="Enter Your Street">
+            <input type="text" id="city" name="city" placeholder="Enter Your City">
             <input type="text" id="locality" name="locality" placeholder="Enter Your Locality">
-            <input type="text" id="pincode" name="pincode" placeholder="Enter Your PINCODE">
-            <button type="submit">Request Admission</button>
+            <input type="text" id="state" name="state" placeholder="Enter Your State">
+            <button type="submit" id="submitButton" name="register">Request Admission</button>
         </form>
     </div>
+
 </body>
 </html>

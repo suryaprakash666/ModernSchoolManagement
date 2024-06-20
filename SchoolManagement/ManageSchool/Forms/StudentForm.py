@@ -1,12 +1,13 @@
 # forms.py
 
 from django import forms
-from ..models import Studentdatamodel
+from ..ModelsOfDatabase.StudentDataModel import Studentdatamodel
 
 
-class StudentForm(forms.ModelForm):
+class StudentForm(forms.Form):
+    parentmobile = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = Studentdatamodel
-        fields = ['Student_Firstname', 'Student_Password']  # Add more fields as needed
-
-
+        fields = ['parentmobile', 'password']

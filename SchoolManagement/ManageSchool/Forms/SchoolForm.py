@@ -1,11 +1,13 @@
 # forms.py
 
 from django import forms
-from ..models import Schooldatamodel
+from ..ModelsOfDatabase.SchoolDataModel import Schooldatamodel
 
 
-class SchoolForm(forms.ModelForm):
+class SchoolForm(forms.Form):
+    email = forms.EmailField()
+    passkey = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = Schooldatamodel
-        fields = ['School_Name', 'School_Key']
-        # Add more fields as needed
+        fields = ['email', 'passkey']
