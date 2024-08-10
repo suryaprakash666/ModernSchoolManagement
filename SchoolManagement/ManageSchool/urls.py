@@ -4,7 +4,7 @@ from rest_framework import routers
 from .Views import Staffhomepage, HomepageView, StaffLoginView, StaffRegisterView, StudentRegisterView, \
     SchoolRegisterView, GradingTabView, StudentLoginView, SchoolLoginView, Studenthomepage, SchoolHomeview, \
     staffnavbarview
-from .Views.SchoolHomeview import student_requests_tabview
+from .Views.SchoolHomeview import student_requests_tabview, teacher_requests_tabview
 from .Views.apiviews import Schooldataviewset, Staffdataviewset, Studentdataviewset, \
     Classdataviewset, SubjectViewset
 from .Views.clearCacheView import clear_cache_view
@@ -26,7 +26,6 @@ urlpatterns = [
     path('stafflogin/', StaffLoginView.staffloginview, name="Stafflogin"),
     path('staffregister/', StaffRegisterView.staffregisterview, name="Staffregisterlink"),
     path('gradingtab', GradingTabView.gradingtabview, name="gradingtaburl"),
-    # path('sendmessage/', Staffhomepage.send_whatsapp_message, name="Sendmessage"),
     path('staffnavbar/', staffnavbarview.staffnavbarview, name="staffnavbar"),
 
     # StudentRelatedURLs
@@ -38,11 +37,10 @@ urlpatterns = [
     path('schoolregister/', SchoolRegisterView.schoolregisterview, name="schoolregisterlink"),
     path('schoollogin/', SchoolLoginView.schoolloginview, name="schoolloginlink"),
     path('schoolhome/', SchoolHomeview.schoolhomeview, name="schoolhomeurl"),
+    path('studentrequesttab', student_requests_tabview, name="student_requests_tabview"),
+    path('teacherrequesttab', teacher_requests_tabview, name="teacher_requests_tabview"),
 
     # other urls
-    path('studentrequesttab', student_requests_tabview, name="student_requests_tabview"),
-    # path('approve_admission_request', approve_admission_request, name="approve_admission_request")
-
     path('clearcache/', clear_cache_view, name="clearcache"),
 
 ]
