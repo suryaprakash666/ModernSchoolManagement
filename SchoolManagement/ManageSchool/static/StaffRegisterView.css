@@ -11,10 +11,14 @@
 .newstaffregister {
   width: 80%;
   margin: 0 auto;
-  background-color: #f0f0f0;
+  background-color: #5f9cea;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
 }
 
 /* Style the form headings */
@@ -36,6 +40,7 @@ label {
 input, select {
   width: 100%;
   padding: 10px;
+  margin-bottom: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;

@@ -6,21 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grading Tab</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <!--Navbar-->
- <div id="navbar-container">
-    {% include 'StaffNavbar.html' %}
- </div>
+
     <!--StudentProfileInfo-->
-    <div class="Studentprofilecontainer">
-        <img src="{% static 'random.jpg' %}" alt="profilepic">
-        <ul>
-            <li>Name: John Doe</li>
-            <li>ID: 123456</li>
-            <li>Section:D2456</li>
-        </ul>
-    </div>
+
     <!--Type Selection Tab-->
     <div class="TypeSelectiontab">
 
@@ -33,34 +25,13 @@
 </select>
         </div>
 
-         <div class="classname">
-             <label for="classname">Choose Class</label>
-             <select name="classname" id="classname">
-                 <option value="Standard1">Standard1</option>
-                 <option value="Standard1">Standard1</option>
-                 <option value="Standard1">Standard1</option>
-                 <option value="Standard1">Standard1</option>
-             </select>
-         </div>
-
-             <div class="section">
-             <label for="section">Choose Class</label>
-             <select name="section" id="section">
-                 <option value="Section1">Section1</option>
-                 <option value="Section1">Section1</option>
-                 <option value="Section1">Section1</option>
-                 <option value="Section1">Section1</option>
-             </select>
-         </div>
-
 
         <div class="StudentID">
-            <label for="StudentID">StudentID</label>
-<select name="StudentID" id="StudentID">
-<option value="StudentID">123095</option>
-<option value="StudentID">123096</option>
-<option value="StudentID">123097</option>
-</select>
+            <label>
+                Student ID
+                <input type="text" value=" value " readonly>
+            </label>
+
         </div>
 
         <div class="profilepic">

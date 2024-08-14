@@ -19,6 +19,7 @@ def staffregisterview(request):
         locality = request.POST.get('locality')
         pincode = request.POST.get('pincode')
         schoolname = Schooldatamodel.objects.get(name=school)
+
         # Now you can use these variables to create a new Staffdatamodel instance or for other purposes
         # For example:
         staff = Staffdatamodel(name=firstname+lastname, email=email, passportphoto=passportphoto, adharphoto=adharphoto,

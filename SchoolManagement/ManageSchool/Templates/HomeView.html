@@ -16,21 +16,72 @@
           <div class="1.0" style="text-align: center">
               Connect and Control
           </div>
+          <div class="2.0" style="text-align: center; font-size: 20px; margin-top: 5px">
+              Choose Better To make Better
+          </div>
       </div>
+
+
 
   <div class="div-2">
 
-    <div class="div-3">
+     <div class="first-options" id="firstOptions" style="display: flex; flex-direction: row; justify-content: space-between">
+          <div class="explore">
+              <button type="button">Explore Nearest Schools</button>
+          </div>
+          <div class="register">
+              <button type="button" id="pre-registrationQuery" onclick="ChangeComponent()">Go To registration</button>
+          </div>
+      </div>
+   <!--
+    <div class="div-3" id="div3" style="display:none ">
       <div class="div-4">You are a?</div>
       <div class="div-5" id="admin" style="margin: auto auto" onclick="switchToPage3()">School Head</div>
       <div class="div-6" id="staff" style="margin: auto auto" onclick="switchToPage2()">Staff</div>
       <div class="div-7" id="parent" style="margin: auto auto" onclick="switchToPage1()">Parent</div>
     </div>
+-->
 
+      <div class="div-3" id="div3" style="display:none; flex-direction: column; align-items: center;  margin: auto auto">
+                <img src="https://clipground.com/images/students-clip-art-4.png" alt="School" style="width: 30%;">
+          <div class="div-4">You are a?</div>
+          <button class="option-button" id="admin" onclick="switchToPage3()">School Head</button>
+          <button class="option-button" id="staff" onclick="switchToPage2()">Staff</button>
+          <button class="option-button" id="parent" onclick="switchToPage1()">Parent</button>
+      </div>
   </div>
 
 </div>
+<script>
+    // Function to change the component and save the state
+    function ChangeComponent() {
+        document.getElementById("firstOptions").style.display = "none";
+        document.getElementById("div3").style.display = "flex";
+        localStorage.setItem("componentState", "div3");
+    }
 
+    // Function to check the state and set the component visibility on page load
+    function checkState() {
+        const state = localStorage.getItem("componentState");
+        if (state === "div3") {
+            document.getElementById("firstOptions").style.display = "none";
+            document.getElementById("div3").style.display = "flex";
+        } else {
+            document.getElementById("firstOptions").style.display = "flex";
+            document.getElementById("div3").style.display = "none";
+        }
+    }
+
+    // Function to handle the back button click and revert to the previous state
+    function goBack() {
+        document.getElementById("firstOptions").style.display = "flex";
+        document.getElementById("div3").style.display = "none";
+        localStorage.setItem("componentState", "firstOptions");
+    }
+
+    // Check the state on page load
+    window.onload = checkState;
+</script>
 </body>
 </html>
 

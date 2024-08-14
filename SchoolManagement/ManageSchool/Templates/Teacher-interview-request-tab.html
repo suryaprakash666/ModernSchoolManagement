@@ -5,16 +5,31 @@
     <title>interviewRequests</title>
 </head>
 <body>
+<h1>Teacher Interview Requests</h1>
+    <div class="filters">
+        <label for="status">By Status:</label>
+        <select id="status">
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+        <label for="date">By Date:</label>
+        <input type="date" id="date">
+
+        <button>Filter</button>
+    </div>
       <table>
         <tr>
             <th>Applicant Name</th>
             <th>Applicant PPhoto</th>
             <th>Applicant AdhPhoto</th>
-            <th>Applicant Qualification</th>
+            <th>Highest Qualification</th>
             <th>Qualification Certificate</th>
-            <th>Address</th>
             <th>Application Date</th>
-            <th>Application Status</th>
+            <th>Application Remark</th>
+            <th>Status</th>
+            <th>Process</th>
         </tr>
         {% for applicant in teachers %}
         <tr>
@@ -23,9 +38,14 @@
             <td><img src="#" alt="AdharPhoto" style="width: 100px; height: 100px;"></td>
             <td>{{applicant.qualification}}</td>
             <td><img src="#" alt="QualificationCertificate" style="width: 100px; height: 100px;"></td>
-            <td>{{applicant.state}},{{applicant.city}}</td>
             <td>{{application_date}}</td>
-            <td><button type="button">{{applicant.registered_staff}}</button></td>
+            <td><textarea></textarea></td>
+            <td><select>
+                    <option value="Pending">Pending</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Rejected">Rejected</option>
+            </select></td>
+            <td><button>Process</button></td>
         </tr>
         {% endfor %}
       </table>
@@ -35,6 +55,7 @@
         border-collapse: collapse;
         border: 3px solid black;
         width: 100%;
+        margin-top: 20px;
     }
 
     td, th {
@@ -48,5 +69,17 @@
     }
 
 </style>
+
+<style>
+    h1 {
+        text-align: center;
+        font-size: 30px;
+    }
+
+</style>
+
+<script>
+
+</script>
 </body>
 </html>

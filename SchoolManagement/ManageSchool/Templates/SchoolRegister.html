@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SchoolRegister</title>
+    <link rel="stylesheet" href="{% static 'Schoolregisterview.css' %}">
 </head>
 <body>
 <form class="SchoolRegister" method="post" action="{% url 'schoolregisterlink' %}">
@@ -14,48 +15,39 @@
             <div class="schoolDetails">
                 <!-- School Details -->
                 <div class="schoolname">
-                    <label for="schoolname">Enter SchoolName</label><br>
-                    <input type="text" id="schoolname" name="schoolname" required>
+                    <input type="text" id="schoolname" name="schoolname" placeholder="School name" required>
                 </div>
 
                 <div class="SchoolRegister_email">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                 </div>
 
                 <div class="passkey">
-                    <label for="passkey" class="form-label">Passkey</label>
-                    <input type="password" class="form-control" id="passkey" name="passkey" required>
-                    <label for="reEnter-passkey">ConfirmPasskey</label>
-                    <input type="password" class="form-control" id="reEnter-passkey" name="reEnter-passkey" required>
+                    <input type="password" class="form-control" id="passkey" name="passkey" placeholder="Passkey"  required>
+                    <input type="password" class="form-control" id="reEnter-passkey" name="reEnter-passkey" placeholder="Re-enter Passkey" required>
                 </div>
 
                 <div class="schoolestab">
-                    <label for="schoolestab">Enter Date of establishment</label>
-                    <input type="date" id="schoolestab" name="schoolestab">
+                    <input type="date" id="schoolestab" name="schoolestab" placeholder="Date of Establishment" required>
                 </div>
             </div>
 
             <div class="addressDetails">
                 <!-- Address Details -->
                 <div class="SchoolRegister_state">
-                    <label for="state" class="form-label">State</label>
-                    <input type="text" class="form-control" id="state" name="state" required>
+                    <input type="text" class="form-control" id="state" name="state" placeholder="State" required>
                 </div>
 
                 <div class="SchoolRegister_district">
-                    <label for="district" class="form-label">District</label>
-                    <input type="text" class="form-control" id="district" name="city" required>
+                    <input type="text" class="form-control" id="district" name="city" placeholder="District" required>
                 </div>
 
                 <div class="locality">
-                    <label for="locality" class="form-label">Locality</label>
-                    <input type="text" class="form-control" id="locality" name="locality">
+                    <input type="text" class="form-control" id="locality" placeholder="Locality" name="locality">
                 </div>
 
                 <div class="street">
-                    <label for="street" class="form-label">Street</label>
-                    <input type="text" class="form-control" id="street" name="street">
+                    <input type="text" class="form-control" id="street" placeholder="Street" name="street">
                 </div>
             </div>
         </div>
@@ -67,75 +59,8 @@
 </form>
 
 <style>
-    label[for="schoolname"]::after,
-label[for="email"]::after,
-label[for="passkey"]::after,
-label[for="reEnter-passkey"]::after,
-label[for="state"]::after {
-    content: " *";
-    color: red;
-}
-    body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
 
-.SchoolRegister {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
-}
 
-.SchoolRegisterForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.formContent {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.schoolDetails, .addressDetails {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.SchoolRegister .form-control {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.SchoolRegister .form-control:hover {
-    border-color: #007bff;
-}
-
-.submitschoolform {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
 
 </style>
 </body>

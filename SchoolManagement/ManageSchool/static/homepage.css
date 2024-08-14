@@ -6,14 +6,14 @@ html, body {
 * {
     box-sizing: border-box;
 }
-.form-container{
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: end;
     overflow: hidden;
     position: relative;
-    height: 100vh; /* Change this line */
+    height: 100vh;
     width: 60%;
     font-size: 22px;
     color: #000;
@@ -21,20 +21,20 @@ html, body {
     padding: 80px 60px;
     margin-left: 40%;
 }
-  @media (max-width: 991px) {
+@media (max-width: 991px) {
     .div {
-      padding: 0 20px;
+        padding: 0 20px;
     }
-  }
-  .img {
+}
+.img {
     position: absolute;
     inset: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
-  }
-  .div-2 {
+}
+.div-2 {
     position: relative;
     border-radius: 10px;
     background: rgba(0,212,255,100%);
@@ -45,84 +45,60 @@ html, body {
     justify-content: center;
     margin: 76px 61px 0 0;
     padding: 76px 60px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Add this line */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
-  @media (max-width: 991px) {
+@media (max-width: 991px) {
     .div-2 {
-      margin: 40px 10px 0 0;
-      padding: 0 20px;
+        margin: 40px 10px 0 0;
+        padding: 0 20px;
     }
-  }
-  .div-3 {
+}
+.div-3 {
     display: flex;
-    margin-top: 17px;
+    margin-top: 117px;
     width: 450px;
     max-width: 100%;
     flex-direction: column;
     row-gap: 20px;
-  }
-  .div-4 {
+}
+@media (max-width: 991px) {
+    .div-3 {
+        width: 100%;
+    }
+}
+.div-4 {
     font-family: Inter, sans-serif;
     justify-content: center;
     align-self: center;
     color: #fff;
     text-align: center;
-  }
-  .div-5 {
-    font-family: Inter, sans-serif;
-    border-radius: 10px;
-    background: linear-gradient(90deg, rgba(6,55,54,1) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
-    margin-top: 56px;
-    align-items: center;
-    justify-content: center;
-    padding: 21px 60px;
-    text-align: center;
-    font-size: 15px;
-    width: 50%;
-  }
-  @media (max-width: 991px) {
-    .div-5 {
-      max-width: 100%;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-  }
-  .div-6 {
-    font-family: Inter, sans-serif;
-    border-radius: 10px;
-    background:linear-gradient(90deg, rgba(6,55,54,1) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
-    margin-top: 29px;
-    align-items: center;
-    padding: 27px 60px 15px;
-    text-align: center;
-    font-size: 15px;
-    width: 50%;
-  }
-  @media (max-width: 991px) {
-    .div-6 {
-      max-width: 100%;
-      padding: 0 20px;
-    }
-  }
-  .div-7 {
-    font-family: Inter, sans-serif;
-    border-radius: 10px;
-    background: linear-gradient(90deg, rgba(6,55,54,1) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
-    margin-top: 29px;
-    align-items: center;
-    justify-content: center;
-    padding: 21px 60px 21px 73px;
-    text-align: center;
-    font-size: 15px;
-    width:50%;
+}
 
-  }
-  @media (max-width: 991px) {
-    .div-7 {
-      max-width: 100%;
-      padding: 0 20px;
-    }
-  }
+    .option-button {
+    font-family: Inter, sans-serif;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgb(52, 147, 145) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 10px;
+    text-align: center;
+    font-size: 15px;
+    width: 50%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.option-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.option-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 body {
     background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&') no-repeat center center fixed;
@@ -131,8 +107,28 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-
-.div-1{
-  width: 100%;
-  font-size: 40px;
+.div-1 {
+    width: 100%;
+    font-size: 40px;
+}
+.first-options button {
+    background: linear-gradient(90deg, rgb(52, 147, 145) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+.first-options button:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.first-options button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

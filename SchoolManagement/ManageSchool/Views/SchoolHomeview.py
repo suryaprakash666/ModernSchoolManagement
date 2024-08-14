@@ -26,3 +26,10 @@ def teacher_requests_tabview(request):
     return render(request, 'Teacher-interview-request-tab.html', {'teachers': teachers, 'application_date': application_date})
 
 
+def clean_interview_request(teacher_id):
+    teacher = Staffdatamodel.objects.get(id=teacher_id)
+    teacher.delete()
+    return redirect('teacher_requests_tabview')
+
+
+
