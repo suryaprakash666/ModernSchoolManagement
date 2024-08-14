@@ -43,8 +43,8 @@ html, body {
     max-width: 100%;
     align-items: center;
     justify-content: center;
-    margin: 76px 61px 0 0;
-    padding: 76px 60px;
+    margin: 76px 35px 0 0;
+    padding: 36px 30px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 991px) {

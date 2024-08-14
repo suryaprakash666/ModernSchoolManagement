@@ -16,7 +16,13 @@ class Schooldatamodel(models.Model):
     state = models.CharField(max_length=100, null=True)
     passkey = models.CharField(max_length=100, unique=True)
     email = models.EmailField(unique=True)
+
+    # After Login Data
     category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
+    Tagline = models.CharField(max_length=100, null=True)
+    About = models.TextField(null=True)
+    profile = models.ImageField(upload_to='profile/', null=True)
+
 
     def __str__(self):
         return self.name
