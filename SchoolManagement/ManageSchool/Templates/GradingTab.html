@@ -9,153 +9,121 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<!--Navbar-->
+      <div class="setParameters">
+          <label>
+                Enter Student ID
+              <input type="text" id="studentId">
+          </label>
 
-    <!--StudentProfileInfo-->
+          <label>
+              Check Correct Name
+              <input type="text" readonly>
+          </label>
 
-    <!--Type Selection Tab-->
-    <div class="TypeSelectiontab">
+          <label>
+                Check Correct Class
+                <input type="text" readonly>
+          </label>
 
-        <div class="ExamType">
-            <label for="ExamType">Choose Exam</label>
-<select name="ExamType" id="ExamType">
-<option value="Exam-1">Exam-1</option>
-<option value="Exam-2">Exam-2</option>
-<option value="Exam-3">Exam-3</option>
-</select>
+                 <label>Select subject to evaluate</label>
+                    <select id="subject">
+                        <option value="Maths">Maths</option>
+                        <option value="Science">Science</option>
+                        <option value="English">English</option>
+                        <option value="Social">Social</option>
+                    </select>
+      </div>
+
+ <!--marking table-->
+        <div class="gradingTable">
+            <table class="table table-bordered">
+               <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Sheet DivisionNo</th>
+                    <th>Max mark</th>
+                    <th>Marks obtained</th>
+                    <th>Total Marks</th>
+                    <th>Status</th>
+                </tr>
+               </thead>
+                <tbody>
+                <tr>
+                    <td rowspan="5">Math</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>30</td>
+                    <td><textarea type="" placeholder="Enter marks like this 10+20+30" class="marksTextarea"></textarea></td>
+                    <td class="totalMarks"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>30</td>
+                    <td><textarea type="" placeholder="Enter marks like this 10+20+30" class="marksTextarea"></textarea></td>
+                    <td class="totalMarks"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>40</td>
+                     <td><textarea type="" placeholder="Enter marks like this 10+20+30" class="marksTextarea"></textarea></td>
+                    <td class="totalMarks"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>10</td>
+                     <td><textarea type="" placeholder="Enter marks like this 10+20+30" class="marksTextarea"></textarea></td>
+                    <td class="totalMarks"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
-
-        <div class="StudentID">
-            <label>
-                Student ID
-                <input type="text" value=" value " readonly>
-            </label>
-
-        </div>
-
-        <div class="profilepic">
-            <img src="{% static 'random.jpg' %}" alt="profile">
-        </div>
-
-    </div>
-       <!--EvaluationTab-->
-
-       <div class="evaluationtab">
-           <table>
-               <tr>
-                   <th colspan="4">Evaluation Tab</th>
-               </tr>
-               <tr id="divisionRow">
-                   <th>
-                       <label for="subject">Subject</label>
-                       <select name="subject" id="subject">
-                           <option value="Hindi">Hindi</option>
-                           <option value="English">English</option>
-                           <option value="Maths">Maths</option>
-                           <option value="Science">Science</option>
-                          </select>
-                   </th>
-                   <th>Division1<br>
-                   <textarea placeholder="Enter Marks" type="text">
-
-                   </textarea>
-                   </th>
-                   <th>Marks Obtained<br>
-                       <textarea placeholder="Marks" type="text" id="marksObtained" readonly></textarea></th>
-                   </th>
-               </tr>
-
-               <tr>
-
-               </tr>
-           </table>
-       </div>
-       <div class="Add Divisions">
-
-       </div>
-
-
-   <div class="resultcalculatingbutton">
-       <button type="button" id="Division">Add Division</button>
-        <button type="button">Caculate Result</button>
-        <button type="button">Reset Evaluation</button>
-   </div>
-    <!--ResultTab-->
-
-    <div class="Student-GradingTab-Container">
-        <table>
-            <tr>
-                <th colspan="4">Student GradeResult Tab</th>
-            </tr>
-            <tr>
-                <th>Subjects</th>
-                <th>TotalMark</th>
-                <th>Grade</th>
-                <th>Result</th>
-            </tr>
-            <tr>
-                <td>Hindi</td>
-                <td>78</td>
-                <td>A+</td>
-                <td>PASS</td>
-            </tr>
-        </table>
-    </div>
-
-
-<script>
-   // When the page loads, create the divisions based on the number stored in local storage
-window.onload = function() {
-    var numDivisions = localStorage.getItem('numDivisions');
-    if (numDivisions) {
-        for (var i = 2; i <= numDivisions; i++) {
-            addDivision(i);
+ <script>
+   document.addEventListener('keypress', function (e) {
+    if (e.target.classList.contains('marksTextarea')) {
+        const regex = /[0-9+\-]/;
+        if (!regex.test(e.key)) {
+            e.preventDefault();
         }
     }
-};
-
-document.getElementById('Division').addEventListener('click', function() {
-    // Get the number of divisions from local storage
-    var numDivisions = localStorage.getItem('numDivisions');
-
-    // If numDivisions is null, this is the first division being added
-    if (!numDivisions) {
-        numDivisions = 2;
-    } else {
-        numDivisions++;
-    }
-
-    // Store the updated number of divisions in local storage
-    localStorage.setItem('numDivisions', numDivisions);
-
-    // Add the new division
-    addDivision(numDivisions);
 });
 
-function addDivision(num) {
-    // Get the table row where divisions will be added
-    var row = document.getElementById('divisionRow');
+document.addEventListener('keydown', function (e) {
+    if (e.target.classList.contains('marksTextarea') && e.key === 'Enter') {
+        e.preventDefault();
+        try {
+            const totalMarks = eval(e.target.value);
+            const totalMarksCell = e.target.closest('tr').querySelector('.totalMarks');
+            totalMarksCell.innerText = totalMarks;
+        } catch (error) {
+            const totalMarksCell = e.target.closest('tr').querySelector('.totalMarks');
+            totalMarksCell.innerText = 'Invalid input';
+        }
+    }
+});
 
-    // Create a new table header for the division
-    var newHeader = document.createElement('th');
-    newHeader.textContent = "Division" + num;
+document.addEventListener('input', function (e) {
+    if (e.target.classList.contains('marksTextarea')) {
+        try {
+            const totalMarks = eval(e.target.value);
+            const row = e.target.closest('tr');
+            const maxMarkCell = row.querySelector('td:nth-child(3)');
+            const maxMark = parseInt(maxMarkCell.innerText, 10);
+            const totalMarksCell = row.querySelector('.totalMarks');
 
-    // Create a new textarea for the division
-    var newTextArea = document.createElement('textarea');
-    newTextArea.placeholder = "Enter Marks";
-    newTextArea.type = "text";
-
-    // Add the textarea to the new table header
-    newHeader.appendChild(newTextArea);
-
-    // Append the new table header to the row
-    row.appendChild(newHeader);
-    let marksObtained = document.getElementById('marksObtained');
-    row.insertBefore(newHeader, marksObtained);
-
-}
-</script>
-
+            if (totalMarks > maxMark) {
+                alert('Total marks exceed the maximum mark for this division.');
+                totalMarksCell.innerText = '';
+            } else {
+                totalMarksCell.innerText = totalMarks;
+            }
+        } catch (error) {
+            const totalMarksCell = e.target.closest('tr').querySelector('.totalMarks');
+            totalMarksCell.innerText = 'Invalid input';
+        }
+    }
+});
+    </script>
 </body>
 </html>
