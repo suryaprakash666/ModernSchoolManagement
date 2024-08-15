@@ -1,3 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+body {
+    background-image: url('https://d33klnzqhe4m3n.cloudfront.net/assets/images/banner_6.webp');
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: -1;
+}
+.tagline{
+    color: #000;
+    text-align: center;
+    margin-top: 20%;
+    margin-bottom: 5%;
+}
+
+.tagline h4 {
+    font-family: 'Dancing Script', cursive;
+    font-style: italic;
+    font-size: 40px;
+    color: #1e347b;
+}
+
+.featureCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto auto;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+}
+
+.card svg {
+    margin-bottom: 1rem; /* Optional: Add some space between the SVG and the card body */
+}
+
+.card-body {
+    text-align: center;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -10,7 +55,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     overflow: hidden;
     position: relative;
     height: 100vh;
@@ -18,8 +63,8 @@ html, body {
     font-size: 22px;
     color: #000;
     font-weight: 700;
-    padding: 80px 60px;
-    margin-left: 40%;
+    padding: 10px 10px;
+    margin: auto auto;
 }
 @media (max-width: 991px) {
     .div {
@@ -34,19 +79,24 @@ html, body {
     object-fit: cover;
     object-position: center;
 }
+
+
 .div-2 {
     position: relative;
     border-radius: 10px;
     background: rgba(0,212,255,100%);
     display: flex;
     width: 601px;
+    height: 70%;
     max-width: 100%;
     align-items: center;
     justify-content: center;
-    margin: 76px 35px 0 0;
-    padding: 36px 30px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    margin: auto auto;
+    z-index: 3;
+
 }
+
 @media (max-width: 991px) {
     .div-2 {
         margin: 40px 10px 0 0;
@@ -66,22 +116,16 @@ html, body {
         width: 100%;
     }
 }
-.div-4 {
-    font-family: Inter, sans-serif;
-    justify-content: center;
-    align-self: center;
-    color: #fff;
-    text-align: center;
-}
+
 
     .option-button {
     font-family: Inter, sans-serif;
     border-radius: 5px;
     background: linear-gradient(90deg, rgb(52, 147, 145) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
-    margin-top: 15px;
+    margin-top: 5px;
     align-items: center;
     justify-content: center;
-    padding: 11px 10px;
+    padding: 5px 5px;
     text-align: center;
     font-size: 15px;
     width: 50%;
@@ -100,13 +144,7 @@ html, body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-body {
-    background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/65ca2e50d7d598df67c24ab11bba77486e5d296712b8c3d061de14df1608954e?apiKey=25285f257e8e483e8592fa07f7380ccb&') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 .div-1 {
     width: 100%;
     font-size: 40px;
