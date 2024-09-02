@@ -1,6 +1,5 @@
-# SchoolManagement/ManageSchool/Views/SchoolLoginView.py
 import hashlib
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from ..Forms.SchoolForm import SchoolForm
 from ..ModelsOfDatabase.SchoolDataModel import Schooldatamodel
 from django.views.decorators.csrf import csrf_exempt
@@ -20,10 +19,13 @@ def schoolloginview(request):
             user_exists = Schooldatamodel.objects.filter(email=email, passkey=hashed_passkey).exists()
             if user_exists:
                 user = Schooldatamodel.objects.get(email=email, passkey=hashed_passkey)
-                return render(request, 'SchoolHomeview.html', {'school': user})
+                request.session['school_id'] = user.id
+                # Print session data to the console
+                print("Session set:", request.session.items())
+                # Redirect to the home page after setting the session
+                return redirect('schoolhomeurl')
             else:
                 return render(request, 'Schoollogin.html', {'form': form, 'error': 'Invalid email or passkey'})
     else:
         form = SchoolForm()
     return render(request, 'Schoollogin.html', {'form': form})
-

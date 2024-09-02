@@ -3,8 +3,9 @@ from rest_framework import routers
 
 from .Views import Staffhomepage, HomepageView, StaffLoginView, StaffRegisterView, StudentRegisterView, \
     SchoolRegisterView, GradingTabView, StudentLoginView, SchoolLoginView, Studenthomepage, SchoolHomeview, \
-    staffnavbarview
-from .Views.SchoolHomeview import student_requests_tabview, teacher_requests_tabview
+    staffnavbarview, SQLInjectionTestingView
+
+from .Views.SchoolHomeview import student_requests_tabview, teacher_requests_tabview, school_logout_view
 from .Views.apiviews import Schooldataviewset, Staffdataviewset, Studentdataviewset, \
     Classdataviewset, SubjectViewset
 from .Views.clearCacheView import clear_cache_view
@@ -39,8 +40,9 @@ urlpatterns = [
     path('schoolhome/', SchoolHomeview.schoolhomeview, name="schoolhomeurl"),
     path('studentrequesttab', student_requests_tabview, name="student_requests_tabview"),
     path('teacherrequesttab', teacher_requests_tabview, name="teacher_requests_tabview"),
+    path('schoollogout', school_logout_view, name="schoollogout"),
 
     # other urls
     path('clearcache/', clear_cache_view, name="clearcache"),
-
+    path('unsafe/school/<str:school_id>/', SQLInjectionTestingView.unsafe_school_view, name="unsafeview"),
 ]

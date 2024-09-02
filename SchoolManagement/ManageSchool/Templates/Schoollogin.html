@@ -12,7 +12,6 @@
 
        <div class="form">
     <form class="schoolLoginForm" method="post" action="{% url 'schoolloginlink' %}">
-        {% csrf_token %}
         <div class="form-group">
             <label  class="form-label">Email:</label>
             {{ form.email }}

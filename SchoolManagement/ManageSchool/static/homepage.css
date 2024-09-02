@@ -1,25 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
-body {
-    background-image: url('https://d33klnzqhe4m3n.cloudfront.net/assets/images/banner_6.webp');
-    background-size: 100% 50%;
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: -1;
+
+.topImage {
+    border: transparent;
+    height: 55vh;
+    width: 100%;
+    z-index: 1;
+}
+.topImage img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 .tagline{
     color: #000;
     text-align: center;
-    margin-top: 20%;
+    margin-top: 5%;
     margin-bottom: 5%;
 }
 
 .tagline h4 {
-    font-family: 'Dancing Script', cursive;
     font-style: italic;
     font-size: 40px;
     color: #1e347b;
 }
-
+@media (max-width: 400px) {
+    .tagline h4 {
+        font-size: 20px;
+    }
+}
 .featureCard{
     display: flex;
     flex-direction: row;
@@ -27,12 +36,29 @@ body {
     width: 90%;
     margin: auto auto;
 }
+@media (max-width: 400px) {
+   .featureCard{
+       flex-direction: column;
+       width: 50%;
+   }
+}
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 18rem;
+    border-color: blue;
+    background-color: gray;
+
+}
+
+@media (max-width:400px) {
+    .card {
+        width: 9rem;
+        height: 9rem;
+        margin-bottom: 5%;
+    }
 }
 
 .card svg {
@@ -79,37 +105,56 @@ html, body {
     object-fit: cover;
     object-position: center;
 }
-
-
-.div-2 {
-    position: relative;
-    border-radius: 10px;
-    background: rgba(0,212,255,100%);
+.regParent{
+    height: 100vh;
+    width: 100%;
     display: flex;
-    width: 601px;
-    height: 70%;
-    max-width: 100%;
-    align-items: center;
     justify-content: center;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    margin: auto auto;
-    z-index: 3;
+    align-items: center;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
 
 }
 
-@media (max-width: 991px) {
-    .div-2 {
-        margin: 40px 10px 0 0;
-        padding: 0 20px;
+.registrationForm{
+    border-radius: 2px;
+    background: rgb(180, 226, 236);
+    height: 70%;
+    width: 40%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    position: relative; /* Add this line */
+}
+
+.registrationForm .close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.registrationForm .close_button button {
+    background: none; /* Remove background color */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+@media (max-width: 400px) {
+    .registrationForm{
+        height: 50%;
+        width: 50%;
     }
 }
 .div-3 {
     display: flex;
-    margin-top: 117px;
-    width: 450px;
-    max-width: 100%;
     flex-direction: column;
-    row-gap: 20px;
+    align-items: center;
+    row-gap: 15px;
 }
 @media (max-width: 991px) {
     .div-3 {
@@ -118,7 +163,7 @@ html, body {
 }
 
 
-    .option-button {
+.option-button {
     font-family: Inter, sans-serif;
     border-radius: 5px;
     background: linear-gradient(90deg, rgb(52, 147, 145) 0%, rgba(9,121,118,1) 35%, rgb(5, 130, 156) 100%);
