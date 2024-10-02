@@ -26,7 +26,7 @@ urlpatterns = [
     path('staffview/', Staffhomepage.staffhomeview, name="Staffhome"),
     path('stafflogin/', StaffLoginView.staffloginview, name="Stafflogin"),
     path('staffregister/', StaffRegisterView.staffregisterview, name="Staffregisterlink"),
-    path('gradingtab', GradingTabView.gradingtabview, name="gradingtaburl"),
+    path('gradingtab/', GradingTabView.gradingtabview, name="gradingtaburl"),
     path('staffnavbar/', staffnavbarview.staffnavbarview, name="staffnavbar"),
 
     # StudentRelatedURLs
@@ -38,8 +38,8 @@ urlpatterns = [
     path('schoolregister/', SchoolRegisterView.schoolregisterview, name="schoolregisterlink"),
     path('schoollogin/', SchoolLoginView.schoolloginview, name="schoolloginlink"),
     path('schoolhome/', SchoolHomeview.schoolhomeview, name="schoolhomeurl"),
-    path('studentrequesttab', student_requests_tabview, name="student_requests_tabview"),
-    path('teacherrequesttab', teacher_requests_tabview, name="teacher_requests_tabview"),
+    path('studentrequesttab', student_requests_tabview, name="studentrequeststaburl"),
+    path('teacherrequesttab', teacher_requests_tabview, name="teacherrequeststaburl"),
     path('schoollogout', school_logout_view, name="schoollogout"),
 
     # other urls

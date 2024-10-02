@@ -59,7 +59,7 @@
         <div class="students-container">
             <div class="students-header"></div>
            <ul class="student-content">
-    <li><a href="#" onclick="switchToAdmissionRequestTab()">Admissions</a></li>
+    <li><a href="#" onclick=AddmissionRequestTab()>Admissions</a></li>
     <li><a href="#">Disciplinary Actions</a></li>
     <li><a href="#">Performance Monitoring</a></li>
     <li><a href="#">Attendance Tracking</a></li>
@@ -134,17 +134,17 @@
 
 </style>
 <script>
-  //write a function to redirect to another page when a link is clicked
-    function switchToAdmissionRequestTab() {
-        window.location.href = '/studentrequesttab';
-    }
-
+  
     function logout() {
 
         window.location.href = '/schoollogout';
     }
 
     function InterviewRequestTab(){
+        window.location.href = '/teacherrequesttab';
+    }
+
+    function AddmissionRequestTab(){
         window.location.href = '/studentrequesttab';
     }
 </script>

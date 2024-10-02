@@ -1,6 +1,7 @@
 import datetime
 from django.shortcuts import render, redirect
 
+from ..ModelsOfDatabase import SchoolDataModel
 from ..ModelsOfDatabase.StaffDataModel import Staffdatamodel
 from ..ModelsOfDatabase.StudentDataModel import Studentdatamodel
 
@@ -41,4 +42,4 @@ def school_logout_view(request):
     if 'school_id' in request.session:
         del request.session['school_id']
         # print("Session Data Deleted")
-    return render(request, 'Schoollogin.html')
+    return redirect('schoolloginlink')

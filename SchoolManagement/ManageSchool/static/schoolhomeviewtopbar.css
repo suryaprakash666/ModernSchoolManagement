@@ -22,7 +22,7 @@
     }
 
     .topframe{
-        background: linear-gradient(90deg, rgb(9, 51, 50) 0%, rgba(9,121,118,1) 35%, rgba(0,212,255,1) 100%);
+        background: linear-gradient(90deg, rgb(95, 233, 231) 0%, rgb(194, 233, 232) 35%, rgba(0,212,255,1) 100%);
         padding: 10px;
         height: 300px;
         border: transparent;

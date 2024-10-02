@@ -4,7 +4,6 @@ from ..Forms.SchoolForm import SchoolForm
 from ..ModelsOfDatabase.SchoolDataModel import Schooldatamodel
 from django.views.decorators.csrf import csrf_exempt
 
-
 @csrf_exempt
 def schoolloginview(request):
     if request.method == 'POST':
@@ -20,10 +19,8 @@ def schoolloginview(request):
             if user_exists:
                 user = Schooldatamodel.objects.get(email=email, passkey=hashed_passkey)
                 request.session['school_id'] = user.id
-                # Print session data to the console
-                print("Session set:", request.session.items())
-                # Redirect to the home page after setting the session
-                return redirect('schoolhomeurl')
+                # Pass the school name to the rendered page
+                return render(request, 'SchoolHomeview.html', {'form': form, 'school': user})
             else:
                 return render(request, 'Schoollogin.html', {'form': form, 'error': 'Invalid email or passkey'})
     else:
