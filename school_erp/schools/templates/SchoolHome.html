@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Admin Dashboard - EduTech Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2ecc71',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-lg">EduTech Solutions</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#" class="py-4 px-2 hover:text-gray-200">Dashboard</a>
+                        <div class="relative group">
+                            <button class="py-4 px-2 hover:text-gray-200">Teachers</button>
+                            <div class="absolute hidden group-hover:block bg-white text-gray-700 shadow-lg rounded-md mt-1">
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Manage Teachers</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Teacher Schedules</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Performance Reports</a>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <button class="py-4 px-2 hover:text-gray-200">Students</button>
+                            <div class="absolute hidden group-hover:block bg-white text-gray-700 shadow-lg rounded-md mt-1">
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Student Directory</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Attendance Records</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Grade Reports</a>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <button class="py-4 px-2 hover:text-gray-200">Academics</button>
+                            <div class="absolute hidden group-hover:block bg-white text-gray-700 shadow-lg rounded-md mt-1">
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Course Management</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Curriculum Planning</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Exam Schedules</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="#" class="py-2 px-2 hover:text-gray-200"><i class="fas fa-cog"></i></a>
+                    <a href="#" class="py-2 px-2 font-medium hover:text-gray-200">Sign Out</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu hidden md:hidden">
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Dashboard</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Teachers</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Students</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Academics</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Settings</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Sign Out</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-8 px-4">
+        <h1 class="text-3xl font-bold mb-6">Welcome, Administrator</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Quick Actions</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-primary hover:underline">View Today's Attendance</a></li>
+                    <li><a href="#" class="text-primary hover:underline">Manage Upcoming Events</a></li>
+                    <li><a href="#" class="text-primary hover:underline">Review Teacher Requests</a></li>
+                    <li><a href="#" class="text-primary hover:underline">Generate Reports</a></li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">School Overview</h2>
+                <div class="space-y-2">
+                    <p><strong>Total Students:</strong> 1,250</p>
+                    <p><strong>Total Teachers:</strong> 75</p>
+                    <p><strong>Attendance Rate:</strong> 95%</p>
+                    <p><strong>Average GPA:</strong> 3.5</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Upcoming Events</h2>
+                <ul class="space-y-2">
+                    <li>Parent-Teacher Conference - May 15</li>
+                    <li>Final Exams Begin - June 1</li>
+                    <li>Graduation Ceremony - June 15</li>
+                    <li>Summer Break Starts - June 20</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Recent Notifications</h2>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                        <span>New absence report submitted - John Doe (Grade 10)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                        <span>Maintenance request for Science Lab - Room 301</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        <span>New curriculum proposal submitted for review</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Task List</h2>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Review and approve next month's lunch menu</span>
+                    </li>
+                    <li class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Schedule meeting with department heads</span>
+                    </li>
+                    <li class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Finalize budget for upcoming school year</span>
+                    </li>
+                    <li class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Review applications for new teaching positions</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Task list functionality
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.parentElement.classList.add('line-through', 'text-gray-500');
+                } else {
+                    this.parentElement.classList.remove('line-through', 'text-gray-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

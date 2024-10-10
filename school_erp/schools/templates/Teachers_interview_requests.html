@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Job Requests - EduTech Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2ecc71',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-lg">EduTech Solutions</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="#" class="py-2 px-2 hover:text-gray-200">Dashboard</a>
+                    <a href="#" class="py-2 px-2 font-medium hover:text-gray-200">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-8 px-4">
+        <h1 class="text-3xl font-bold mb-6">Teacher Job Requests</h1>
+        
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Filters</h2>
+            <div class="flex flex-wrap gap-4">
+                <select id="subjectFilter" class="p-2 border rounded">
+                    <option value="">All Subjects</option>
+                    <option value="Math">Math</option>
+                    <option value="Science">Science</option>
+                    <option value="English">English</option>
+                    <option value="History">History</option>
+                </select>
+                <select id="experienceFilter" class="p-2 border rounded">
+                    <option value="">All Experience Levels</option>
+                    <option value="0-2">0-2 years</option>
+                    <option value="3-5">3-5 years</option>
+                    <option value="5+">5+ years</option>
+                </select>
+                <input type="text" id="nameFilter" placeholder="Search by name" class="p-2 border rounded">
+                <button id="applyFilters" class="bg-primary text-white p-2 rounded hover:bg-blue-600">Apply Filters</button>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">Name</th>
+                        <th class="py-3 px-6 text-left">Subject</th>
+                        <th class="py-3 px-6 text-left">Experience</th>
+                        <th class="py-3 px-6 text-left">Application Date</th>
+                        <th class="py-3 px-6 text-left">Resume</th>
+                        <th class="py-3 px-6 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    {% for request in teacher_requests %}
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="mr-2">
+                                    <img class="w-6 h-6 rounded-full" src="{{ request.profile_picture_url }}">
+                                </div>
+                                <span>{{ request.name }}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 px-6 text-left">{{ request.subject }}</td>
+                        <td class="py-3 px-6 text-left">{{ request.experience }} years</td>
+                        <td class="py-3 px-6 text-left">{{ request.application_date }}</td>
+                        <td class="py-3 px-6 text-left">
+                            <a href="{{ request.resume_url }}" target="_blank" class="text-blue-600 hover:text-blue-800">View Resume</a>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                            <div class="flex item-center justify-center">
+                                <button class="accept-btn bg-green-500 text-white active:bg-green-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" data-id="{{ request.id }}">
+                                    Accept
+                                </button>
+                                <button class="reject-btn bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" data-id="{{ request.id }}">
+                                    Reject
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyFiltersBtn = document.getElementById('applyFilters');
+            const subjectFilter = document.getElementById('subjectFilter');
+            const experienceFilter = document.getElementById('experienceFilter');
+            const nameFilter = document.getElementById('nameFilter');
+            const tableRows = document.querySelectorAll('tbody tr');
+
+            applyFiltersBtn.addEventListener('click', function() {
+                const subject = subjectFilter.value.toLowerCase();
+                const experience = experienceFilter.value;
+                const name = nameFilter.value.toLowerCase();
+
+                tableRows.forEach(row => {
+                    const rowSubject = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    const rowExperience = parseInt(row.querySelector('td:nth-child(3)').textContent);
+                    const rowName = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+
+                    let showRow = true;
+
+                    if (subject && !rowSubject.includes(subject)) {
+                        showRow = false;
+                    }
+
+                    if (experience) {
+                        const [min, max] = experience.split('-').map(Number);
+                        if (max && (rowExperience < min || rowExperience > max)) {
+                            showRow = false;
+                        } else if (!max && rowExperience < min) {
+                            showRow = false;
+                        }
+                    }
+
+                    if (name && !rowName.includes(name)) {
+                        showRow = false;
+                    }
+
+                    row.style.display = showRow ? '' : 'none';
+                });
+            });
+
+            // Accept and Reject button functionality
+            document.querySelectorAll('.accept-btn, .reject-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.classList.contains('accept-btn') ? 'accept' : 'reject';
+                    const requestId = this.getAttribute('data-id');
+                    
+                    // Here you would typically send an AJAX request to your Django backend
+                    // For demonstration, we'll just log the action and remove the row
+                    console.log(`${action.charAt(0).toUpperCase() + action.slice(1)}ed request ${requestId}`);
+                    
+                    this.closest('tr').remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
