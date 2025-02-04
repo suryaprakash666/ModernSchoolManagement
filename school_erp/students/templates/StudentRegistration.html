@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - EduTech Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2ecc71',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-lg">CloudCampus</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-8 px-4 mb-8">
+        <h1 class="text-3xl font-bold mb-6 text-center">Student Registration</h1>
+        
+        <form id="studentRegistrationForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-2xl mx-auto" method="post" action="{% url 'studentregisterurl' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- School Selection -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="school">Select School</label>
+                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="school" name="school" required>
+                    <option value="">Select School</option>
+                    {% for school in schools %}
+                        <option value="{{ school.id }}">{{ school.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        
+            <!-- First Name and Last Name -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">First Name</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" name="first_name" type="text" placeholder="John" required>
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">Last Name</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastName" name="last_name" type="text" placeholder="Doe" required>
+            </div>
+        
+            <!-- Date of Birth -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dateOfBirth">Date of Birth</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dateOfBirth" name="date_of_birth" type="date" required>
+            </div>
+        
+            <!-- Email -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="john.doe@example.com" required>
+            </div>
+        
+            <!-- Phone -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Phone</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel" placeholder="1234567890" required>
+            </div>
+        
+            <!-- Address -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="address">Address</label>
+                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" required></textarea>
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="city">City</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="city" name="city" type="text" required>
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="state">State</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="state" name="state" type="text" required>
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="country">Country</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="country" name="country" type="text" required>
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="pincode">Pincode</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pincode" name="pincode" type="number" required>
+            </div>
+        
+            <!-- Documents -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="aadharCard">Aadhar Card (PDF or Image)</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="aadharCard" name="adharcard" type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="passportPhoto">Passport Photo (JPG or PNG)</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passportPhoto" name="passportphoto" type="file" accept=".jpg,.jpeg,.png" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="tc">Transfer Certificate (if any)</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tc" name="tc" type="file" accept=".pdf,.jpg,.jpeg,.png">
+            </div>
+        
+            <!-- Submit Button -->
+            <div class="flex items-center justify-between">
+                <button class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Register</button>
+            </div>
+        </form>
+        
+    </div>
+
+    <script>
+        document.getElementById('passportPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('w-32', 'h-32', 'object-cover', 'rounded');
+                document.getElementById('passportPhotoPreview').innerHTML = '';
+                document.getElementById('passportPhotoPreview').appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>

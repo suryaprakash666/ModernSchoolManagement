@@ -1,202 +1,233 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Admission Requests - EduTech Solutions</title>
+    <title>Student Admission Requests</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3498db',
-                        secondary: '#2ecc71',
-                    }
-                }
-            }
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
-    </script>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <nav class="bg-primary text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-7">
-                    <div>
-                        <a href="#" class="flex items-center py-4 px-2">
-                            <span class="font-semibold text-lg">EduTech Solutions</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-3">
-                    <a href="#" class="py-2 px-2 hover:text-gray-200"><i class="fas fa-cog"></i></a>
-                    <a href="#" class="py-2 px-2 font-medium hover:text-gray-200">Sign Out</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Student Admission Requests</h1>
 
-    <div class="container mx-auto mt-8 px-4">
-        <h1 class="text-3xl font-bold mb-6">Student Admission Requests</h1>
-        
-        <div class="mb-6 flex flex-wrap gap-4">
-            <div class="flex-1">
-                <label for="filter-status" class="block text-sm font-medium text-gray-700 mb-1">Filter by Status</label>
-                <select id="filter-status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
-                    <option value="">All</option>
-                    <option value="pending">Pending</option>
-                    <option value="accepted">Accepted</option>
-                    <option value="rejected">Rejected</option>
-                </select>
-            </div>
-            <div class="flex-1">
-                <label for="filter-grade" class="block text-sm font-medium text-gray-700 mb-1">Filter by Grade</label>
-                <select id="filter-grade" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
-                    <option value="">All</option>
-                    <option value="9">Grade 9</option>
-                    <option value="10">Grade 10</option>
-                    <option value="11">Grade 11</option>
-                    <option value="12">Grade 12</option>
-                </select>
-            </div>
-            <div class="flex-1">
-                <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                <input type="text" id="search" placeholder="Search by name or ID" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
-            </div>
+        <!-- Filters Section -->
+        <div class="flex flex-wrap gap-4 mb-6">
+            <input type="text" id="searchInput" placeholder="Search by Name or Email" class="p-2 border border-gray-300 rounded">
+            <select id="statusFilter" class="p-2 border border-gray-300 rounded">
+                <option value="">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <button onclick="applyFilters()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Apply Filters</button>
         </div>
 
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Applied</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">ID</th>
+                        <th class="py-3 px-6 text-left">Name</th>
+                        <th class="py-3 px-6 text-left">Email</th>
+                        <th class="py-3 px-6 text-center">Documents</th>
+                        <th class="py-3 px-6 text-center">Status</th>
+                        <th class="py-3 px-6 text-center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    {% for request in admission_requests %}
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ request.id }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ request.name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ request.grade }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                {% if request.status == 'pending' %}bg-yellow-100 text-yellow-800
-                                {% elif request.status == 'accepted' %}bg-green-100 text-green-800
-                                {% else %}bg-red-100 text-red-800{% endif %}">
-                                {{ request.status|title }}
+                <tbody id="studentTableBody" class="text-gray-600 text-sm font-light">
+                    {% for student in students %}
+                    <tr class="border-b border-gray-200 hover:bg-gray-100" data-id="{{ student.id }}">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">
+                            <span class="font-medium">{{ student.id }}</span>
+                        </td>
+                        <td class="py-3 px-6 text-left">
+                            <span>{{ student.first_name|add:student.last_name }}</span>
+                        </td>
+                        <td class="py-3 px-6 text-left">
+                            <span>{{ student.email }}</span>
+                        </td>
+
+                        <td class="py-3 px-6 text-center">
+                            <button onclick="viewDocuments('{{ student.aadhar_card.url }}', '{{ student.passport_photo.url }}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs">
+                                View Documents
+                            </button>
+                        </td>
+
+                        <td class="py-3 px-6 text-center">
+                            <span class="status-badge {{ student.status|lower }} py-1 px-3 rounded-full text-xs" data-status="{{ student.status }}">
+                                {{ student.status }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ request.date_applied }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <button class="text-primary hover:text-primary-dark mr-3" onclick="viewDetails({{ request.id }})">View</button>
-                            {% if request.status == 'pending' %}
-                            <button class="text-green-600 hover:text-green-900 mr-3" onclick="updateStatus({{ request.id }}, 'accepted')">Accept</button>
-                            <button class="text-red-600 hover:text-red-900" onclick="updateStatus({{ request.id }}, 'rejected')">Reject</button>
-                            {% endif %}
+                        
+                        <td class="py-3 px-6 text-center">
+                            <div class="flex item-center justify-center">
+                                <button onclick="approveRequest({{ student.id }})" class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button onclick="rejectRequest({{ student.id }})" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-semibold mb-4">Admission Requests Overview</h2>
-                <canvas id="admissionChart"></canvas>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
-                <ul class="space-y-2">
-                    {% for activity in recent_activities %}
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 
-                            {% if activity.type == 'accepted' %}bg-green-500
-                            {% elif activity.type == 'rejected' %}bg-red-500
-                            {% else %}bg-yellow-500{% endif %} 
-                            rounded-full mr-2"></span>
-                        <span>{{ activity.message }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+    </div>
+    
+    <div id="documentModal" class="modal flex">
+        <div class="modal-content">
+            <h2 class="text-lg font-bold mb-4">Student Documents</h2>
+            <div id="documentLinks"></div>
+            <button onclick="closeModal()" class="mt-4 bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded">Close</button>
         </div>
     </div>
-
+    <!-- Filter Script -->
     <script>
-        // Filter functionality
-        const filterStatus = document.getElementById('filter-status');
-        const filterGrade = document.getElementById('filter-grade');
-        const searchInput = document.getElementById('search');
-
+        // Apply filters to the student table
         function applyFilters() {
-            const status = filterStatus.value;
-            const grade = filterGrade.value;
-            const searchTerm = searchInput.value.toLowerCase();
-
-            const rows = document.querySelectorAll('tbody tr');
+            let searchInput = document.getElementById('searchInput').value.toLowerCase();
+            let statusFilter = document.getElementById('statusFilter').value.toLowerCase(); // Convert to lowercase
+            let rows = document.querySelectorAll('#studentTableBody tr');
+        
             rows.forEach(row => {
-                const rowStatus = row.querySelector('td:nth-child(4) span').textContent.toLowerCase();
-                const rowGrade = row.querySelector('td:nth-child(3)').textContent;
-                const rowName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                const rowId = row.querySelector('td:nth-child(1)').textContent;
-
-                const statusMatch = status === '' || rowStatus.includes(status);
-                const gradeMatch = grade === '' || rowGrade === grade;
-                const searchMatch = rowName.includes(searchTerm) || rowId.includes(searchTerm);
-
-                row.style.display = statusMatch && gradeMatch && searchMatch ? '' : 'none';
+                let name = row.cells[1].innerText.toLowerCase();
+                let email = row.cells[2].innerText.toLowerCase();
+                let status = row.cells[4].innerText.trim().toLowerCase(); // Convert to lowercase
+        
+                let matchesSearch = name.includes(searchInput) || email.includes(searchInput);
+                let matchesStatus = statusFilter === "" || status === statusFilter;
+        
+                row.style.display = (matchesSearch && matchesStatus) ? "" : "none";
             });
         }
 
-        filterStatus.addEventListener('change', applyFilters);
-        filterGrade.addEventListener('change', applyFilters);
-        searchInput.addEventListener('input', applyFilters);
-
-        // View details function (placeholder)
-        function viewDetails(id) {
-            alert(`Viewing details for request ID: ${id}`);
-        }
-
-        // Update status function (placeholder)
-        function updateStatus(id, status) {
-            alert(`Updating status to ${status} for request ID: ${id}`);
-            // In a real application, you would make an API call here to update the status
-            // and then refresh the table or update the specific row
-        }
-
-        // Chart
-        const ctx = document.getElementById('admissionChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Pending', 'Accepted', 'Rejected'],
-                datasets: [{
-                    data: [30, 50, 20],
-                    backgroundColor: ['#fbbf24', '#34d399', '#f87171']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Admission Requests Status'
-                    }
+// Update the status directly in the table and make a POST request to the backend
+function updateStatus(id, status, originalStatus) {
+    const row = document.querySelector(`#studentTableBody tr[data-id="${id}"]`);
+    if (row) {
+        const statusCell = row.cells[4]; // Ensure the status is in the correct column (index 4)
+        
+        if (statusCell) {
+            statusCell.innerHTML = `<span class="status-badge ${status.toLowerCase()} py-1 px-3 rounded-full text-xs">${status}</span>`;
+            
+            // Make a POST request to update the status on the server
+            fetch('/schools/studentsadmissionrequests/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF protection
+                },
+                body: JSON.stringify({
+                    id: id,
+                    status: status
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Status update was successful on the backend
+                    console.log("Status updated successfully on the backend.");
+                } else {
+                    // Handle failure to update on the backend
+                    statusCell.innerHTML = `<span class="status-badge ${originalStatus.toLowerCase()} py-1 px-3 rounded-full text-xs">${originalStatus}</span>`;
+                    alert(data.error || "Error: Failed to update the status on the backend.");
                 }
+            })
+            .catch(error => {
+                // Handle network error or failure to reach the server
+                statusCell.innerHTML = `<span class="status-badge ${originalStatus.toLowerCase()} py-1 px-3 rounded-full text-xs">${originalStatus}</span>`;
+                alert("Network error: Please try again later.");
+            });
+        }
+    }
+}
+
+// Approve a student's admission request
+function approveRequest(id) {
+    const row = document.querySelector(`#studentTableBody tr[data-id="${id}"]`);
+    const statusCell = row ? row.cells[4] : null;
+    const originalStatus = statusCell ? statusCell.innerText.trim() : "Pending"; // Default to "Pending"
+    updateStatus(id, 'Approved', originalStatus);
+}
+
+// Reject a student's admission request
+function rejectRequest(id) {
+    const row = document.querySelector(`#studentTableBody tr[data-id="${id}"]`);
+    const statusCell = row ? row.cells[4] : null;
+    const originalStatus = statusCell ? statusCell.innerText.trim() : "Pending"; // Default to "Pending"
+    updateStatus(id, 'Rejected', originalStatus);
+}
+
+// Helper function to get the CSRF token for POST requests
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
-        });
+        }
+    }
+    return cookieValue;
+}
+
+    </script>
+    <script>
+        function viewDocuments(aadharUrl, photoUrl) {
+            let documentLinks = document.getElementById('documentLinks');
+            documentLinks.innerHTML = '';
+            
+            if (aadharUrl) {
+                documentLinks.innerHTML += `<p><a href="${aadharUrl}" target="_blank" class="text-blue-500">View Aadhar Card</a></p>`;
+            }
+            if (photoUrl) {
+                documentLinks.innerHTML += `<p><a href="${photoUrl}" target="_blank" class="text-blue-500">View Passport Photo</a></p>`;
+            }
+            if (!aadharUrl && !photoUrl) {
+                documentLinks.innerHTML = '<p>No documents available.</p>';
+            }
+            
+            document.getElementById('documentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('documentModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>

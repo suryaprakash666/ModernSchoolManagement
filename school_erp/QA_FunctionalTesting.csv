@@ -1,0 +1,23 @@
+testcase_id, description, status, review, priority, assigned_to, date_created, date_executed, comments, steps_to_reproduce
+sch100,schoolRegister_test with correct input, Passed, Properly working, High, Surya Prakash Das, 2023-10-01, 2023-10-02, , Step 1: Open registration page, Step 2: Enter valid details, Step 3: Submit form
+sch101,schoolRegister_test with mismatched password, Passed, Properly working with error message, Medium, Steve Smith, 2023-10-01, 2023-10-02, , Step 1: Open registration page, Step 2: Enter mismatched passwords, Step 3: Submit form
+sch104,schoolRegister_test with invalid email, Failed, Properly Working but error message not showing correctly, High, Surya Prakash Das, 2023-10-01, 2023-10-02, , Step 1: Open registration page, Step 2: Enter invalid email, Step 3: Submit form
+sch102,schoollogin_test with all correct input, Pending,__, Medium, Jane Smith, 2023-10-01, , , Step 1: Open login page, Step 2: Enter valid credentials, Step 3: Submit form
+sch105,schoollogin_test with wrong password input but correct email and captcha, Pending,__, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open login page, Step 2: Enter correct email and captcha, Step 3: Enter wrong password, Step 4: Submit form
+sch106,schoollogin_test with wrong captcha input with other correct input, Pending,__, Medium, Steve Smith, 2023-10-01, , , Step 1: Open login page, Step 2: Enter correct email and password, Step 3: Enter wrong captcha, Step 4: Submit form
+sch107,schoollogin_test with wrong email input but other correct input, Pending,__, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open login page, Step 2: Enter wrong email and correct password, Step 3: Submit form
+std108,studentRegister_test with correct input, Pending, __, Medium, Steve Smith, 2023-10-01, , , Step 1: Open student registration page, Step 2: Enter valid details, Step 3: Submit form
+tch109,teacherRegister_test with correct input, Pending, __, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open teacher registration page, Step 2: Enter valid details, Step 3: Submit form
+std110,studentRegister_test with invalid email, Pending, __, Medium, Jane Smith, 2023-10-01, , , Step 1: Open student registration page, Step 2: Enter invalid email, Step 3: Submit form
+std111,studentRegister_test with mismatched password, Pending, __, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open student registration page, Step 2: Enter mismatched passwords, Step 3: Submit form
+tch112,teacherRegister_test with invalid email, Pending, __, Medium, Rohit Sharma, 2023-10-01, , , Step 1: Open teacher registration page, Step 2: Enter invalid email, Step 3: Submit form
+tch113,teacherRegister_test with mismatched password, Pending, __, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open teacher registration page, Step 2: Enter mismatched passwords, Step 3: Submit form
+sch114,schoolRegister_test with missing required fields, Pending, __, High, Jane Smith, 2023-10-01, , , Step 1: Open registration page, Step 2: Leave required fields empty, Step 3: Submit form
+sch115,schoollogin_test with missing password, Pending, __, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open login page, Step 2: Enter email and leave password empty, Step 3: Submit form
+sch116,schoollogin_test with missing email, Pending, __, Medium, Ms dhoni, 2023-10-01, , , Step 1: Open login page, Step 2: Enter password and leave email empty, Step 3: Submit form
+std117,studentRegister_test with missing required fields, Pending, __, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open student registration page, Step 2: Leave required fields empty, Step 3: Submit form
+tch118,teacherRegister_test with missing required fields, Pending, __, Medium, Surya Prakash Das, 2023-10-01, , , Step 1: Open teacher registration page, Step 2: Leave required fields empty, Step 3: Submit form
+hm119,homepage_schoolentry button test, Pending, Working as intended, Low, Surya Prakash Das, 2023-10-01, , , Step 1: Open homepage, Step 2: Click on school entry button
+hm120,homepage_studententry button test, Pending, Working as intended, Low, Jane Smith, 2023-10-01, , , Step 1: Open homepage, Step 2: Click on student entry button
+hm121,homepage_teacherentry button test, Pending, Working as intended, Low, Surya Prakash Das, 2023-10-01, , , Step 1: Open homepage, Step 2: Click on teacher entry button
+hm122,homepage getstarted button test, Pending, Working as intended, Low, Jane Smith, 2023-10-01, , , Step 1: Open homepage, Step 2: Click on get started button

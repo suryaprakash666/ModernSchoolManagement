@@ -26,7 +26,7 @@
                 <div class="flex space-x-7">
                     <div>
                         <a href="#" class="flex items-center py-4 px-2">
-                            <span class="font-semibold text-lg">EduTech Solutions</span>
+                            <span class="font-semibold text-lg">CloudCampus</span>
                         </a>
                     </div>
                     <div class="hidden md:flex items-center space-x-1">
@@ -42,7 +42,7 @@
                         <div class="relative group">
                             <button class="py-4 px-2 hover:text-gray-200">Students</button>
                             <div class="absolute hidden group-hover:block bg-white text-gray-700 shadow-lg rounded-md mt-1">
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Student Directory</a>
+                                <a href="{% url 'studentadmissionrequestsurl'%}" class="block px-4 py-2 hover:bg-gray-100">Student Admission Requests</a>
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100">Attendance Records</a>
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100">Grade Reports</a>
                             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-3">
                     <a href="#" class="py-2 px-2 hover:text-gray-200"><i class="fas fa-cog"></i></a>
-                    <a href="#" class="py-2 px-2 font-medium hover:text-gray-200">Sign Out</a>
+                    <a href="{% url 'schoollogouturl' %}" class="py-2 px-2 font-medium hover:text-gray-200">Sign Out</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button class="mobile-menu-button">
@@ -79,7 +79,7 @@
     </nav>
 
     <div class="container mx-auto mt-8 px-4">
-        <h1 class="text-3xl font-bold mb-6">Welcome, Administrator</h1>
+        <h1 class="text-3xl font-bold mb-6">Welcome,{{username}}</h1>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="bg-white rounded-lg shadow-md p-6">
@@ -172,6 +172,7 @@
                 }
             });
         });
+
     </script>
 </body>
 </html>

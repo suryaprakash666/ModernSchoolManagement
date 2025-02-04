@@ -16,11 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 from home.views import home
+from school_erp import settings
 
 urlpatterns = [
+    # Include home app URLs here
+    path('captcha/', include('captcha.urls')),
     path('admin/', admin.site.urls),
-    path('', include('home.urls'))
-    # Include other app URLs here
+    path('', include('home.urls')),
+
+    # Include schools app URLs here
+    path('schools/', include('schools.urls')),
+
+
+    # Include students app URLs here
+    path('students/', include('students.urls')),
+
+
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

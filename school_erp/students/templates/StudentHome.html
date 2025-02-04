@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold">Student Portal</div>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="hover:text-blue-200">Courses</a>
+                <a href="#" class="hover:text-blue-200">Grades</a>
+                <a href="#" class="hover:text-blue-200">Attendance</a>
+                <a href="#" class="hover:text-blue-200">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Student Information -->
+            <div class="col-span-1 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Student Information</h2>
+                <div class="space-y-2">
+                    <p><strong>Name:</strong> <span id="studentName">John Doe</span></p>
+                    <p><strong>ID:</strong> <span id="studentId">S12345</span></p>
+                    <p><strong>Grade:</strong> <span id="studentGrade">10th</span></p>
+                    <p><strong>Class:</strong> <span id="studentClass">X-A</span></p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-span-1 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Quick Links</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-blue-600 hover:underline">View Timetable</a></li>
+                    <li><a href="#" class="text-blue-600 hover:underline">Upcoming Exams</a></li>
+                    <li><a href="#" class="text-blue-600 hover:underline">Submit Assignments</a></li>
+                    <li><a href="#" class="text-blue-600 hover:underline">School Calendar</a></li>
+                </ul>
+            </div>
+
+            <!-- Announcements -->
+            <div class="col-span-1 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Announcements</h2>
+                <ul class="space-y-2" id="announcements">
+                    <!-- Announcements will be dynamically added here -->
+                </ul>
+            </div>
+
+            <!-- Recent Grades -->
+            <div class="col-span-1 md:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Recent Grades</h2>
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Subject</th>
+                            <th class="py-3 px-6 text-center">Grade</th>
+                            <th class="py-3 px-6 text-center">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light" id="gradesTable">
+                        <!-- Grades will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Attendance Summary -->
+            <div class="col-span-1 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Attendance Summary</h2>
+                <div class="flex justify-center items-center h-48">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sample data (replace with actual data from your backend)
+        const studentData = {
+            name: "John Doe",
+            id: "S12345",
+            grade: "10th",
+            class: "X-A"
+        };
+
+        const announcements = [
+            { text: "Parent-Teacher meeting scheduled for next Friday", date: "2023-05-15" },
+            { text: "Annual Sports Day on June 1st", date: "2023-05-10" },
+            { text: "Last date for submitting science project: May 25th", date: "2023-05-05" }
+        ];
+
+        const grades = [
+            { subject: "Mathematics", grade: "A", date: "2023-05-01" },
+            { subject: "Science", grade: "B+", date: "2023-04-28" },
+            { subject: "English", grade: "A-", date: "2023-04-25" },
+            { subject: "History", grade: "B", date: "2023-04-22" }
+        ];
+
+        const attendanceData = {
+            present: 85,
+            absent: 10,
+            late: 5
+        };
+
+        // Populate student information
+        document.getElementById("studentName").textContent = studentData.name;
+        document.getElementById("studentId").textContent = studentData.id;
+        document.getElementById("studentGrade").textContent = studentData.grade;
+        document.getElementById("studentClass").textContent = studentData.class;
+
+        // Populate announcements
+        const announcementsList = document.getElementById("announcements");
+        announcements.forEach(announcement => {
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="font-semibold">${announcement.date}:</span> ${announcement.text}`;
+            announcementsList.appendChild(li);
+        });
+
+        // Populate grades
+        const gradesTable = document.getElementById("gradesTable");
+        grades.forEach(grade => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td class="py-3 px-6 text-left whitespace-nowrap">${grade.subject}</td>
+                <td class="py-3 px-6 text-center">${grade.grade}</td>
+                <td class="py-3 px-6 text-center">${grade.date}</td>
+            `;
+            gradesTable.appendChild(tr);
+        });
+
+        // Create attendance chart
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Present', 'Absent', 'Late'],
+                datasets: [{
+                    data: [attendanceData.present, attendanceData.absent, attendanceData.late],
+                    backgroundColor: ['#4CAF50', '#F44336', '#FFC107']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

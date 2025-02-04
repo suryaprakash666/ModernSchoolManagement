@@ -69,15 +69,15 @@
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-8">Who are you?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="#" class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <a href="{% url 'schoolloginurl'%}" class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <i class="fas fa-school text-5xl text-accent mb-4"></i>
                     <h3 class="text-xl font-semibold">School/College</h3>
                 </a>
-                <a href="#" class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <a href="{% url 'studentloginurl'%}" class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <i class="fas fa-chalkboard-teacher text-5xl text-accent mb-4"></i>
                     <h3 class="text-xl font-semibold">Teacher</h3>
                 </a>
-                <a href="#" class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <a href="{%url 'studentloginurl'%}" class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <i class="fas fa-user-graduate text-5xl text-accent mb-4"></i>
                     <h3 class="text-xl font-semibold">Student/Parent</h3>
                 </a>

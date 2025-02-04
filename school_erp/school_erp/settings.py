@@ -45,11 +45,14 @@ INSTALLED_APPS = [
     'library',
     'schools',
     'students',
-    'teachers',
     'timetable',
+    'captcha',
+    'staffs',
+    'Baseuser',
 ]
 
-
+CAPTCHA_FOREGROUND_COLOR = '#000000'
+CAPTCHA_BACKGROUND_COLOR = '#FFFFFF'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,6 +131,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "Baseuser.BaseUser"  # Replace 'yourappname' with the actual app name where Staff model is defined
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -145,6 +152,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

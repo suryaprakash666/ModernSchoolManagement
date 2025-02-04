@@ -1,0 +1,2 @@
+Login failed due to non_active user
+invalid UUID error due debris of session data remained where the actuall data is not present in the database
