@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'attendance',
-    'courses',
+    'classes',
+    'subjects',
     'exams',
     'finance',
     'library',
@@ -131,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "Baseuser.BaseUser"  # Replace 'yourappname' with the actual app name where Staff model is defined
+#AUTH_USER_MODEL = "Baseuser.BaseUser"  # Replace 'yourappname' with the actual app name where Staff model is defined
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
 ]

@@ -1,72 +1,97 @@
 from django.db import models
-from Baseuser.models import BaseUser
+from django.core.validators import MinLengthValidator, MaxLengthValidator, EmailValidator, RegexValidator
 
-class Student(BaseUser):
-    roll_number = models.IntegerField(primary_key=True)
-    standard = models.IntegerField(choices=[(1, '1st'), (2, '2nd'), (3, '3rd'), (4, '4th'), (5, '5th'), (6, '6th'), (7, '7th'), (8, '8th'), (9, '9th'), (10, '10th'), (11, '11th'), (12, '12th')])
-    section = models.CharField(max_length=5, null=True, blank=True)
-    school = models.ForeignKey('schools.School', on_delete=models.CASCADE)
-
-    # Parents details
-    father_name = models.CharField(max_length=50)
-    mother_name = models.CharField(max_length=50)
-    father_phone = models.CharField(max_length=15)
-    mother_phone = models.CharField(max_length=15)
-    class_teacher = models.ForeignKey('staffs.Staff', on_delete=models.CASCADE, related_name='students')
-
-    # Address
-    address = models.TextField()
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
-    pincode = models.IntegerField()
-
-
-    #documents
-    adharcard = models.FileField(upload_to='documents/adharcard/', null=True, blank=True)
-    tc = models.FileField(upload_to='documents/tc/', null=True, blank=True)
-    passportphoto = models.ImageField(upload_to='documents/passportphoto/', null=True, blank=True)
-
-    #course
-    #course = models.ManyToManyField('courses.Course', related_name='students')
-
-
-    class Meta:
-        verbose_name = 'Student'
-        verbose_name_plural = 'Students'
-        db_table = 'students'
-
-    def __str__(self):
-        return self.first_name + ' ' + self.last_name
-
-
-class StudentRegistration(models.Model):
-    school = models.ForeignKey('schools.School', on_delete=models.CASCADE, null=True, blank=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    date_of_birth = models.DateField()
-    email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=15)
-    address = models.TextField()
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
-    pincode = models.IntegerField()
-
-    #documents
-    adharcard = models.FileField(upload_to='registration_documents/adharcard/', null=True, blank=True)
-    tc = models.FileField(upload_to='registration_documents/tc/', null=True, blank=True)
-    passportphoto = models.ImageField(upload_to='registration_documents/passportphoto/', null=True, blank=True)
-    is_verified = models.BooleanField(default=False)
-
-    #request status
-    status = models.CharField(max_length=20, choices=[('Pending', 'Pending'), ('Approved', 'Approved'), ('Rejected', 'Rejected')], default='Pending')
+class StudentRegister(models.Model):
+    first_name = models.CharField(
+        max_length=255, 
+        null=True, 
+        blank=True, 
+        validators=[MinLengthValidator(2)]
+    )
+    last_name = models.CharField(
+        max_length=255, 
+        null=True, 
+        blank=True, 
+        validators=[MinLengthValidator(2)]
+    )
+    email = models.EmailField(
+        null=True, 
+        blank=True, 
+        validators=[EmailValidator()]
+    )
+    phone_number = models.CharField(
+        max_length=15, 
+        null=True, 
+        blank=True, 
+        validators=[
+            RegexValidator(
+                regex=r'^\+?1?\d{9,15}$', 
+                message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+            )
+        ]
+    )
+    documents_uploaded = models.JSONField(null=True, blank=True)  # Storing file paths or names of uploaded docs
+    admission_request_date = models.DateField(auto_now_add=True)
+    school = models.ForeignKey('schools.School', on_delete=models.CASCADE, related_name='student_registers')
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+    ]
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES, 
+        default='pending'
+    )
 
     class Meta:
-        verbose_name = 'Student Registration'
-        verbose_name_plural = 'Student Registrations'
-        db_table = 'student_registrations'
+        db_table = "student_register"
+        verbose_name = "Student Register"
+        verbose_name_plural = "Student Registers"
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
-    
+        return f"{self.first_name} {self.last_name} ({self.email})"
+
+
+class Student(models.Model):
+    user = models.ForeignKey('Baseuser.BaseUser', on_delete=models.CASCADE, related_name='students')
+    roll_number = models.CharField(
+        max_length=20, 
+        unique=True, 
+        validators=[MinLengthValidator(1), MaxLengthValidator(20)]
+    )
+    class_level = models.ForeignKey('classes.Class', on_delete=models.CASCADE, related_name='students')
+    section = models.ForeignKey('classes.Section', on_delete=models.CASCADE, related_name='students')
+    admission_date = models.DateField(null=True, blank=True)
+    parent_name = models.CharField(
+        max_length=255, 
+        null=True, 
+        blank=True, 
+        validators=[MinLengthValidator(2)]
+    )
+    parent_contact = models.CharField(
+        max_length=15, 
+        null=True, 
+        blank=True, 
+        validators=[
+            RegexValidator(
+                regex=r'^\+?1?\d{9,15}$', 
+                message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+            )
+        ]
+    )
+    parent_email = models.EmailField(
+        null=True, 
+        blank=True, 
+        validators=[EmailValidator()]
+    )
+    profile_picture = models.ImageField(upload_to='student_profiles/', null=True, blank=True)
+    documents_verified = models.BooleanField(default=False)  # To indicate if documents are verified
+
+    class Meta:
+        db_table = "student"
+        verbose_name = "Student"
+        verbose_name_plural = "Students"
+
+    def __str__(self):
+        return f"{self.roll_number} - {self.user.username}"

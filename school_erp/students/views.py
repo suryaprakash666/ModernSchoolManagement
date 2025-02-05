@@ -9,7 +9,7 @@ from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, logout
 from Baseuser.models import BaseUser
-from .models import StudentRegistration
+from .models import StudentRegister
 
 # Homepage view
 @login_required
@@ -61,7 +61,7 @@ def registrationview(request):
             school = School.objects.get(id=school_id)
 
             # Create and save StudentRegistration object
-            student_registration = StudentRegistration(
+            student_registration = StudentRegister(
                 school=school,
                 first_name=first_name,
                 last_name=last_name,

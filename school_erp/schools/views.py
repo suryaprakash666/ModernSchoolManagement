@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from schools.models import School
-from students.models import Student, StudentRegistration
+from students.models import Student, StudentRegister
 from Baseuser.models import BaseUser
 
 
@@ -161,7 +161,7 @@ def studentadmissionrequestsview(request):
                 return JsonResponse({"success": False, "error": "Missing student ID"}, status=400)
 
             # Find the student request by ID
-            student_request = get_object_or_404(StudentRegistration, id=int(student_id))
+            student_request = get_object_or_404(StudentRegister, id=int(student_id))
 
             if status == "Approved":
                 # Check if the user already exists (to prevent duplicate error)
@@ -225,5 +225,5 @@ def studentadmissionrequestsview(request):
             return JsonResponse({"success": False, "error": str(e)}, status=500)
 
     # Handle GET requests
-    students = StudentRegistration.objects.all()
+    students = StudentRegister.objects.all()
     return render(request, "student_admission_requests.html", {"students": students})
