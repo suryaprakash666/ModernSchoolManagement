@@ -102,10 +102,5 @@ python manage.py runserver
 
 ---
 
-## 📝 **License**  
 
-📝 This project is licensed under the **MIT License**. See `LICENSE` for details.  
 
----  
-
-Now your README looks **engaging, structured, and visually appealing**! 🎨🔥 Let me know if you need further refinements! 🚀
